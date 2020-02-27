@@ -1,0 +1,1 @@
+https://unpkg.com/quran-json@1.0.1/json/surahs/112.json

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:drawable = "@drawable/logo"
+        android:duration = "1000"
+        />
+    <item android:drawable = "@drawable/quran"
+        android:duration = "1000"
+        />
+    <item android:drawable = "@drawable/qurancover"
+        android:duration = "1000"
+        />
+
+
+</animation-list>
