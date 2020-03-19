@@ -3,6 +3,8 @@ package com.example.quranonline.data.api;
 import com.example.quranonline.data.model.ayat.Ayat;
 import com.example.quranonline.data.model.tafseer.Tafseer;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -14,4 +16,9 @@ public interface AyaApi {
     public Call<Tafseer> getquranTafseer(@Path("tafseer_id") int tafseer_id ,
                                          @Path("sura_number") int sura_number ,
                                          @Path("ayah_number") int ayah_number);
+    @GET("tafseer/{tafseer_id}/{sura_number}/{ayah_number_from}/{ayah_number_to}/")
+    public Call<List<Tafseer>> getTafseerData (@Path("tafseer_id") int tafseer_id ,
+                                             @Path("sura_number") int sura_number ,
+                                             @Path("ayah_number_from") int ayah_number_from ,
+                                             @Path("ayah_number_to") int ayah_number_to);
 }

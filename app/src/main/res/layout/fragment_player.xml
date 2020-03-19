@@ -4,11 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgroundimage"
+    android:background="#0086ad"
     tools:context=".view.fragment.PlayerFragment">
-    <RelativeLayout
+    <TextView
+        android:layout_width="wrap_content"
+        android:id="@+id/tv_download"
+        android:layout_height="wrap_content"
+        android:text="تنزيل السورة"
+        android:textColor="#fff"
+        android:textSize="20sp"/>
+    <ImageView
+        android:layout_marginLeft="20sp"
+        android:layout_below="@id/tv_download"
+        android:layout_margin="@dimen/dim_5dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_file_download_black_24dp"
+        android:id="@+id/btn_download"/>
 
-        android:background="#FFFFFF"
+    <RelativeLayout
+        android:layout_marginTop="70dp"
+
+        android:background="#0086ad"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/rel1"
@@ -65,7 +82,7 @@
         android:id="@+id/player_btshare"/>
 
     <LinearLayout
-        android:background="#fff"
+        android:background="#0086ad"
         android:layout_marginTop="10dp"
         android:layout_below="@id/player_btshare"
         android:layout_width="match_parent"

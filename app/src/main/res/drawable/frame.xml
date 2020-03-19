@@ -9,6 +9,18 @@
     <item android:drawable = "@drawable/qurancover"
         android:duration = "1000"
         />
+    <item android:drawable = "@drawable/zedge1"
+        android:duration = "1000"
+        />
+    <item android:drawable = "@drawable/zedge2"
+    android:duration = "1000"
+    />
+    <item android:drawable = "@drawable/zedge3"
+    android:duration = "1000"
+    />
+    <item android:drawable = "@drawable/zedge4"
+    android:duration = "1000"
+    />
 
 
 </animation-list>

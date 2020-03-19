@@ -21,6 +21,9 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.example.quranonline.data.local.HelperMethod.dismissProgressDialog;
+import static com.example.quranonline.data.local.HelperMethod.showProgressDialog;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -47,10 +50,11 @@ String tafseerText;
 //        linearLayout.setOrientation(RecyclerView.HORIZONTAL);
         ayarv.setLayoutManager(linearLayout);
         viewModel= ViewModelProviders.of(this).get(AyahViewModel.class);
-        viewModel.getData(surahNumber);
+        getSurahData();
         viewModel.data.observe(this, new Observer<List<Verse>>() {
             @Override
             public void onChanged(List<Verse> verses) {
+                dismissProgressDialog();
                 adapter=new AyahAdapter(getActivity() , verses,AyahFragment.this,surahNumber);
                 ayarv.setAdapter(adapter);
             }
@@ -72,6 +76,13 @@ String tafseerText;
 
 //
         return tafseer;
+
+}
+public void getSurahData()
+{
+    showProgressDialog(getActivity() , "please wait");
+    viewModel.getData(surahNumber);
+
 
 }
 

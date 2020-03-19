@@ -4,32 +4,72 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:id="@+id/main"
+    android:background="#0086ad"
     android:layout_height="match_parent"
     tools:context=".view.activity.MainActivity">
 
+
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_centerInParent="true"
-        android:src="@drawable/logomark"
+        android:layout_marginTop="100dp"
+        android:layout_height="200dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/logo_app"
         android:id="@+id/splash_ivlogo"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/splash_ivlogo"
+        android:src="@drawable/online"
+        android:layout_marginTop="10dp"/>
     <LinearLayout
         android:layout_alignParentBottom="true"
+        android:layout_marginBottom="100dp"
         android:layout_width="match_parent"
-        android:layout_height="110dp"
+        android:id="@+id/linear"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
         <Button
+            
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bu_back"
             android:layout_width="match_parent"
+            android:fontFamily="@font/quran"
+            android:textSize="25sp"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
             android:layout_height="50dp"
             android:text="قراءة قران"
-            android:layout_margin="@dimen/dim_5dp"
+            android:layout_margin="10dp"
             android:id="@+id/readbtn"/>
         <Button
+            android:layout_marginTop="10dp"
+
+            android:background="@drawable/bu_back"
+
             android:layout_width="match_parent"
+            android:fontFamily="@font/quran"
+            android:textSize="25sp"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
             android:layout_height="50dp"
-            android:layout_margin="@dimen/dim_5dp"
+            android:layout_margin="10dp"
             android:text="سماع قران"
             android:id="@+id/listenbtn"/>
+        <Button
+            android:background="@drawable/bu_back"
+
+            android:fontFamily="@font/quran"
+            android:textSize="25sp"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:text="تفسير الجلالين"
+            android:id="@+id/tafseerglalin"/>
+
+
     </LinearLayout>
 
 

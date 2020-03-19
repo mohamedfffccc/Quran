@@ -7,10 +7,15 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+
+import com.example.quranonline.view.dialog.AyahNumber;
 import com.example.quranonline.view.fragment.ayah.AyahFragment;
 import com.example.quranonline.R;
 import com.example.quranonline.adapter.SurahAdapter;
 import com.example.quranonline.data.local.SurahClass;
+import com.example.quranonline.view.fragment.tafseer.TafseerFragment;
 
 import java.util.ArrayList;
 
@@ -47,6 +52,7 @@ public class SurahFragment extends BaseFragment {
                     f.surah_num=data.get(position).server;
                     f.server_num=server_num;
                     f.server_name=server_name;
+                    f.surah_name=data.get(position).name;
                     ReplaceFragment(getActivity().getSupportFragmentManager(),f ,R.id.main , null , "medo");
                 }
                 else if (LoadData(getActivity(), "action").equals("read")) {
@@ -55,8 +61,17 @@ public class SurahFragment extends BaseFragment {
 
                     ReplaceFragment(getActivity().getSupportFragmentManager(),fragment ,R.id.main , null , "medo");
                 }
+                else if (LoadData(getActivity(), "action").equals("tafseer")) {
+                    FragmentManager manager=getActivity().getSupportFragmentManager();
+                    AyahNumber ayahNumber = new AyahNumber();
+                    ayahNumber.surah_name = data.get(position).name;
+                    ayahNumber.surah_num=Integer.parseInt(data.get(position).server);
+                    ayahNumber.show(manager,"show");
+//
 
-            }
+
+                }
+                }
         });
 
         // Inflate the layout for this fragment
