@@ -37,14 +37,16 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 
+import static com.example.quranonline.data.local.HelperMethod.dialog;
 import static com.example.quranonline.data.local.HelperMethod.shareVia;
+import static com.example.quranonline.data.local.HelperMethod.showDownloadProgress;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class PlayerFragment extends BaseFragment {
-    public ProgressDialog dialog;
+
     public String server_num, server_name, surah_num;
     String path;
     public String surah_name;
@@ -145,7 +147,8 @@ public class PlayerFragment extends BaseFragment {
                 shareVia(getActivity(), pinterestu, path);
                 break;
             case R.id.btn_download :
-                CheckUserPermsions();
+                new DownloadTask(getActivity()).execute(path);
+
                 break;
         }
     }
@@ -189,50 +192,10 @@ public class PlayerFragment extends BaseFragment {
         player.interrupt();
         super.onBack();
     }
-    void CheckUserPermsions(){
-        if ( Build.VERSION.SDK_INT >= 23){
-            if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE) !=
-                    PackageManager.PERMISSION_GRANTED  ){
-                requestPermissions(new String[]{
-                                Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                        REQUEST_CODE_ASK_PERMISSIONS);
-                return ;
-            }
-        }
-
-        new DownloadTask(getActivity()).execute(path);
-
-    }
-    //get acces to location permsion
-    final private int REQUEST_CODE_ASK_PERMISSIONS = 123;
-
-
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        switch (requestCode) {
-            case REQUEST_CODE_ASK_PERMISSIONS:
-                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    new DownloadTask(getActivity()).execute(path);
-                } else {
-                    // Permission Denied
-                    Toast.makeText( getActivity(),"your message" , Toast.LENGTH_SHORT)
-                            .show();
-                }
-                break;
-            default:
-                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        }
-
-    }
 
 
     public void showProgressDialog() {
-        dialog = new ProgressDialog(getActivity());
-        dialog.setMessage("downloading...");
-        dialog.setProgress(ProgressDialog.STYLE_HORIZONTAL);
-        dialog.setCancelable(false);
-        dialog.show();
+        showDownloadProgress(getActivity());
     }
 
     public class DownloadTask extends AsyncTask<String, Integer, String> {
@@ -244,7 +207,7 @@ public class PlayerFragment extends BaseFragment {
         }
 
         @Override
-        protected void onPreExecute() {
+            protected void onPreExecute() {
             super.onPreExecute();
             PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
             mwakelook = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, getClass().getName());

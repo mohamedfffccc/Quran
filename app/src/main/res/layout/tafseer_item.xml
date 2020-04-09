@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_margin="@dimen/dim_5dp"
+    android:background="@drawable/aya_back"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="الاية رقم "
+        android:id="@+id/numberayatv"
+        android:fontFamily="@font/quran"
+        android:textStyle="bold"
+        android:textColor="#000"
+        android:textSize="30sp"
+        android:layout_alignParentRight="true"/>
+    <TextView
+        android:layout_below="@id/numberayatv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="التفسير"
+        android:id="@+id/tafseertv"
+        android:fontFamily="@font/quran"
+        android:textStyle="bold"
+        android:textColor="#000"
+        android:textSize="30sp"
+        android:layout_alignParentRight="true"/>
+
+
+</RelativeLayout>

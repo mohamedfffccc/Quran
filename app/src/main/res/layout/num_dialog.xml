@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#0086ad"
+    android:layout_height="200dp"
+android:layout_width="match_parent">
+    >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="#fff"
+        android:fontFamily="@font/quran"
+        android:text="سورة"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20sp"
+        android:id="@+id/surahnametv"/>
+
+        <TextView
+            android:layout_below="@id/surahnametv"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="من اية"
+            android:id="@+id/tv_from"
+            android:textSize="20sp"
+            android:textColor="#fff"/>
+    <EditText
+        android:layout_marginRight="10dp"
+        android:id="@+id/ed_fraom"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/surahnametv"
+        android:layout_toLeftOf="@id/tv_from"
+        android:inputType="number"/>
+    <TextView
+        android:layout_marginRight="50dp"
+        android:layout_below="@id/surahnametv"
+android:layout_toLeftOf="@id/ed_fraom"        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="الي اية"
+        android:id="@+id/tv_to"
+        android:textSize="20sp"
+        android:textColor="#fff"/>
+    <EditText
+        android:layout_marginRight="10dp"
+        android:id="@+id/ed_to"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/surahnametv"
+        android:layout_toLeftOf="@id/tv_to"
+        android:inputType="number"/>
+    <Button
+        android:background="@drawable/bu_back"
+        android:fontFamily="@font/quran"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="موافق"
+        android:id="@+id/acceptbtn"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:textColor="#fff"/>
+
+</RelativeLayout>

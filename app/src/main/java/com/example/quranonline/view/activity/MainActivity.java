@@ -1,7 +1,12 @@
 package com.example.quranonline.view.activity;
 
+import android.Manifest;
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
@@ -14,9 +19,11 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
 
 import com.example.quranonline.R;
 import com.example.quranonline.view.fragment.AuthorFragment;
+import com.example.quranonline.view.fragment.PlayerFragment;
 import com.example.quranonline.view.fragment.SurahFragment;
 
 import java.io.File;
@@ -30,14 +37,12 @@ import static com.example.quranonline.data.local.SharedPreferencesManger.SaveDat
 
 public class MainActivity extends BaseActivity {
 
-    @BindView(R.id.splash_ivlogo)
-    ImageView splashIvlogo;
     @BindView(R.id.readbtn)
-    Button readbtn;
+    ImageView readbtn;
     @BindView(R.id.listenbtn)
-    Button listenbtn;
+    ImageView listenbtn;
     @BindView(R.id.tafseerglalin)
-    Button tafseerglalin;
+    ImageView tafseerglalin;
     @BindView(R.id.linear)
     LinearLayout linear;
 
@@ -48,40 +53,19 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         ButterKnife.bind(this);
-        linear.setVisibility(View.GONE);
+        CheckUserPermsions();
 
-        @SuppressLint("ResourceType") Animation set = AnimationUtils.loadAnimation(this, R.animator.scaleimage);
-        splashIvlogo.startAnimation(set);
-        set.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
 
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                        Toast.makeText(getApplicationContext() , "choose action" , Toast.LENGTH_SHORT).show();
-
-                Animation  set2 = AnimationUtils.loadAnimation(MainActivity.this , R.anim.translate);
-                linear.setVisibility(View.VISIBLE);
-//
-                linear.startAnimation(set2);
-
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
-        });
+        Animation set2 = AnimationUtils.loadAnimation(MainActivity.this, R.anim.translate);
+        linear.setVisibility(View.VISIBLE);
+        linear.startAnimation(set2);
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-    }
+//    @Override
+//    public void onBackPressed() {
+//        showDialoge();
+//    }
 
     @OnClick({R.id.readbtn, R.id.listenbtn, R.id.tafseerglalin})
     public void onViewClicked(View view) {
@@ -114,6 +98,61 @@ public class MainActivity extends BaseActivity {
         file.mkdir();
 
         }
+    }
+    void CheckUserPermsions(){
+        if ( Build.VERSION.SDK_INT >= 23){
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) !=
+                    PackageManager.PERMISSION_GRANTED  ){
+                requestPermissions(new String[]{
+                                Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                        REQUEST_CODE_ASK_PERMISSIONS);
+                return ;
+            }
+        }
+
+
+
+    }
+    //get acces to location permsion
+    final private int REQUEST_CODE_ASK_PERMISSIONS = 123;
+
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case REQUEST_CODE_ASK_PERMISSIONS:
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                } else {
+                    // Permission Denied
+                    Toast.makeText( this,"your message" , Toast.LENGTH_SHORT)
+                            .show();
+                }
+                break;
+            default:
+                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+
+    }
+    public  void  showDialoge()
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                .setTitle("تنبيه")
+                .setMessage("هل تريد الخروج من البرتامج ؟")
+                .setIcon(R.drawable.logo_app);
+        builder.setPositiveButton("معم", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+        })
+                .setNegativeButton("لا", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        builder.show();
     }
 
 

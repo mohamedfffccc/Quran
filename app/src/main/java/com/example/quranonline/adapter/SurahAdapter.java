@@ -1,6 +1,7 @@
 package com.example.quranonline.adapter;
 
 import android.content.Context;
+import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,8 +41,13 @@ public class SurahAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.surahitem , null);
+
         TextView name = (TextView) view.findViewById(R.id.surahname);
+        TextView type = view.findViewById(R.id.tv_type);
+        type.setText(list.get(position).type);
         name.setText(list.get(position).name);
+
+
         return view;
     }
 }
