@@ -12,18 +12,19 @@
 
     <TextView
         android:textStyle="bold"
-        android:fontFamily="@font/kofy2"
+        android:fontFamily="@font/kofy3"
         android:textSize="50sp"
-        android:layout_centerInParent="true"
+
+        android:layout_centerHorizontal="true"
         android:textColor="#fff"
         android:text="بسم اللــه الرحمــن الرحــيم"
         android:layout_width="match_parent"
         android:gravity="center"
         android:layout_height="200dp"
 
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="100dp"/>
     <LinearLayout
-        android:visibility=""
+        android:visibility="gone"
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:id="@+id/linear"
