@@ -1,5 +1,6 @@
 package com.example.quranonline.data.api;
 
+import com.example.quranonline.data.model.Azkar;
 import com.example.quranonline.data.model.ayat.Ayat;
 import com.example.quranonline.data.model.tafseer.Tafseer;
 
@@ -21,4 +22,6 @@ public interface AyaApi {
                                              @Path("sura_number") int sura_number ,
                                              @Path("ayah_number_from") int ayah_number_from ,
                                              @Path("ayah_number_to") int ayah_number_to);
+    @GET("QuranService/GetAzkar.php")
+    Call<List<Azkar>> getAzkar();
 }

@@ -25,6 +25,8 @@ import com.example.quranonline.R;
 import com.example.quranonline.view.fragment.AuthorFragment;
 import com.example.quranonline.view.fragment.PlayerFragment;
 import com.example.quranonline.view.fragment.SurahFragment;
+import com.example.quranonline.view.fragment.azkar.AzkarFragment;
+import com.example.quranonline.view.fragment.tafseer.TafseerFragment;
 
 import java.io.File;
 
@@ -67,7 +69,7 @@ public class MainActivity extends BaseActivity {
 //        showDialoge();
 //    }
 
-    @OnClick({R.id.readbtn, R.id.listenbtn, R.id.tafseerglalin})
+    @OnClick({R.id.readbtn, R.id.listenbtn, R.id.tafseerglalin , R.id.listenazkarbtn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.readbtn:
@@ -84,6 +86,10 @@ public class MainActivity extends BaseActivity {
             case R.id.tafseerglalin:
                 SaveData(MainActivity.this, "action", "tafseer");
                 ReplaceFragment(getSupportFragmentManager(), new SurahFragment(), R.id.main, null, "medo");
+
+                break;
+            case  R.id.listenazkarbtn :
+                ReplaceFragment(getSupportFragmentManager(), new AzkarFragment(), R.id.main, null, "medo");
 
                 break;
         }
@@ -155,6 +161,8 @@ public class MainActivity extends BaseActivity {
         builder.show();
     }
 
-
-
+    @Override
+    public void onBackPressed() {
+        super.superBackPressed();
+    }
 }

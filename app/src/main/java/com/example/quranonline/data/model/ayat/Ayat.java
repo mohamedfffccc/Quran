@@ -10,7 +10,7 @@ public class Ayat {
     @SerializedName("number")
     @Expose
     private Integer number;
-    @SerializedName("name")
+    @SerializedName("Name")
     @Expose
     private String name;
     @SerializedName("transliteration_en")

@@ -80,6 +80,24 @@
             android:layout_margin="10dp"
             android:text="تفسير الجلالين"
             android:id="@+id/tafseerglalin"/>
+        <ImageView
+            android:layout_marginTop="10dp"
+
+
+            android:layout_weight="1"
+
+            android:src="@drawable/ic_audiotrack_black_24dp"
+            android:layout_width="50dp"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/quran"
+            android:textSize="25sp"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:text="سماع قران"
+            android:id="@+id/listenazkarbtn"/>
+
 
 
 
