@@ -24,7 +24,6 @@ public class AzkarService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Toast.makeText(this,"Wake Up" , Toast.LENGTH_SHORT).show();
         new OnlineNotification().notify(getApplicationContext() , "" , 0);
         MediaPlayer mp = MediaPlayer.create(getApplicationContext() , R.raw.sound);
         mp.start();

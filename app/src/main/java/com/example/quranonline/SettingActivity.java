@@ -145,7 +145,7 @@ public class SettingActivity extends AppCompatActivity {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
         String time = simpleDateFormat.format(new Date());
         String[] times = time.split(":");
-        Toast.makeText(this, times[0] + times[1], Toast.LENGTH_SHORT).show();
+       // T
 
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(times[0]));
@@ -160,6 +160,7 @@ public class SettingActivity extends AppCompatActivity {
         if (activitySettingSw.isChecked()==true)
         {
             startAlarmService(period);
+            Toast.makeText(this, "تم ضبط الاذكار كل "+ period +" دقائق  ", Toast.LENGTH_SHORT).show();
         }
         else if(activitySettingSw.isChecked()==false)
         {
