@@ -1,10 +1,9 @@
 package com.example.quranonline.view.activity;
 
 import android.Manifest;
-import android.animation.ObjectAnimator;
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -12,21 +11,18 @@ import android.os.Environment;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 
 import com.example.quranonline.R;
+import com.example.quranonline.SettingActivity;
 import com.example.quranonline.view.fragment.AuthorFragment;
-import com.example.quranonline.view.fragment.PlayerFragment;
 import com.example.quranonline.view.fragment.SurahFragment;
 import com.example.quranonline.view.fragment.azkar.AzkarFragment;
-import com.example.quranonline.view.fragment.tafseer.TafseerFragment;
 
 import java.io.File;
 
@@ -50,6 +46,8 @@ public class MainActivity extends BaseActivity {
 
     @BindView(R.id.main)
     RelativeLayout main;
+    @BindView(R.id.btn_setting)
+    ImageView btnSetting;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +67,7 @@ public class MainActivity extends BaseActivity {
 //        showDialoge();
 //    }
 
-    @OnClick({R.id.readbtn, R.id.listenbtn, R.id.tafseerglalin , R.id.listenazkarbtn})
+    @OnClick({R.id.readbtn, R.id.btn_setting,R.id.listenbtn, R.id.tafseerglalin, R.id.listenazkarbtn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.readbtn:
@@ -88,40 +86,43 @@ public class MainActivity extends BaseActivity {
                 ReplaceFragment(getSupportFragmentManager(), new SurahFragment(), R.id.main, null, "medo");
 
                 break;
-            case  R.id.listenazkarbtn :
+            case R.id.listenazkarbtn:
                 ReplaceFragment(getSupportFragmentManager(), new AzkarFragment(), R.id.main, null, "medo");
 
                 break;
+            case R.id.btn_setting :
+                Intent setting_i = new Intent(this , SettingActivity.class);
+                startActivity(setting_i);
         }
 
 
     }
-    public void createDir()
-    {
-        File file = new File(Environment.getExternalStorageDirectory() , "/OnlineQurn_Downloads");
+
+    public void createDir() {
+        File file = new File(Environment.getExternalStorageDirectory(), "/OnlineQurn_Downloads");
         boolean success = true;
         if (!file.exists()) {
-        file.mkdir();
+            file.mkdir();
 
         }
     }
-    void CheckUserPermsions(){
-        if ( Build.VERSION.SDK_INT >= 23){
+
+    void CheckUserPermsions() {
+        if (Build.VERSION.SDK_INT >= 23) {
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) !=
-                    PackageManager.PERMISSION_GRANTED  ){
+                    PackageManager.PERMISSION_GRANTED) {
                 requestPermissions(new String[]{
                                 Manifest.permission.WRITE_EXTERNAL_STORAGE},
                         REQUEST_CODE_ASK_PERMISSIONS);
-                return ;
+                return;
             }
         }
 
 
-
     }
+
     //get acces to location permsion
     final private int REQUEST_CODE_ASK_PERMISSIONS = 123;
-
 
 
     @Override
@@ -131,7 +132,7 @@ public class MainActivity extends BaseActivity {
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 } else {
                     // Permission Denied
-                    Toast.makeText( this,"your message" , Toast.LENGTH_SHORT)
+                    Toast.makeText(this, "your message", Toast.LENGTH_SHORT)
                             .show();
                 }
                 break;
@@ -140,8 +141,8 @@ public class MainActivity extends BaseActivity {
         }
 
     }
-    public  void  showDialoge()
-    {
+
+    public void showDialoge() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this)
                 .setTitle("تنبيه")
                 .setMessage("هل تريد الخروج من البرتامج ؟")

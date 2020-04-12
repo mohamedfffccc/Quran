@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
-
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:background="#123"
     android:layout_height="50dp">
     <LinearLayout
-        android:layout_alignParentRight="true"
+       android:layout_toRightOf="@id/btn_next"
         android:background="#fff"
-        android:layout_width="300dp"
+        android:layout_width="270dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <de.hdodenhof.circleimageview.CircleImageView
@@ -28,6 +29,9 @@
             android:id="@+id/tvauthorname"/>
     </LinearLayout>
     <ImageView
+        android:id="@+id/btn_next"
+        android:layout_centerVertical="true"
+        android:background="#005b96"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:src="@drawable/ic_keyboard_arrow_left_black_24dp"

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SettingActivity">
+    <TextView
+        android:id="@+id/activity_setting_tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textColor="#000"
+        android:text="الاعـدادات"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/font5"/>
+    <TextView
+        android:id="@+id/ativity_setting_tv_azkar"
+        android:layout_below="@id/activity_setting_tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#000"
+        android:text="الاذكار"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20sp"
+        android:fontFamily="@font/font5"/>
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/activity_setting_tv_title"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20sp"
+        android:id="@+id/activity_setting_sw"
+        android:thumb="@drawable/ic_brightness_1_black_24dp"
+        android:track="@drawable/switchtrack"
+        android:checked="false"/>
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/activity_setting_lin_percentage"
+
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_below="@id/activity_setting_sw"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_gravity="right"
+            android:fontFamily="@font/font5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:text="نسبة الظهور"/>
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:id="@+id/activity_setting_rg_percentagr"
+            android:layout_marginTop="20sp">
+            <RadioButton
+                android:fontFamily="@font/font5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="عالية (كل 5 دقائق)"
+                android:id="@+id/activity_setting_rb_high"/>
+            <RadioButton
+                android:fontFamily="@font/font5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="متوسطة (كل 15 دقيقة)"
+                android:id="@+id/activity_setting_rb_medium"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:fontFamily="@font/font5"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="صغيرة (كل 30 دقيقة)"
+                android:id="@+id/activity_setting_rb_rare"/>
+        </RadioGroup>
+    </LinearLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="100dp"
+        android:text="حفظ"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/bu_back"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textColor="#fff"
+        android:id="@+id/activity_setting_btn_save"/>
+
+
+
+</RelativeLayout>
