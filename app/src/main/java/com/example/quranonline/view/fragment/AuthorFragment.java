@@ -139,7 +139,6 @@ public class AuthorFragment extends BaseFragment {
         data.add(new AuthorClass("6", "lafi", " لافي العوني"));
         data.add(new AuthorClass("9", "zaml", " ماجد الزامل"));
         data.add(new AuthorClass("9", "shaibat", "مالك شيبة الحمد"));
-        data.add(new AuthorClass("12", "maher_m", " ماهر المعيقلي"));
         data.add(new AuthorClass("12", "maher", " ماهر المعيقلي ح"));
         data.add(new AuthorClass("10", "shaksh", " ماهر شخاشير"));
         data.add(new AuthorClass("8", "ayyub", " محمد أيوب"));

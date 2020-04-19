@@ -11,6 +11,8 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -18,6 +20,7 @@ import com.example.quranonline.R;
 import com.example.quranonline.data.model.Azkar;
 import com.example.quranonline.data.service.DownloadTask;
 import com.example.quranonline.view.activity.MainActivity;
+import com.example.quranonline.view.fragment.AzkarPlayer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +29,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
+
+import static com.example.quranonline.data.local.HelperMethod.ReplaceFragment;
 
 
 /**
@@ -74,77 +79,16 @@ public class AzkarAdapter extends RecyclerView.Adapter<AzkarAdapter.CategoriesVi
                         "_" + ".mp3").execute(categoryList.get(position).getLink());
             }
         });
-        holder.teaderBtnPlay.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                holder.readerSeek.setVisibility(View.VISIBLE);
-                Thread play_mp3 = new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            mp.setDataSource(categoryList.get(position).getLink());
-                            mp.prepare();
-                            mp.start();
-
-
-                        } catch (Exception e) {
-
-                        }
-                        holder.readerSeek.setMax(mp.getDuration());
-
-                        while (true) {
-                            try {
-                                Thread.sleep(1000);
-
-
-                            } catch (Exception e) {
-
-                            }
-                            if (context == null) {
-                                return;
-                            }
-                            mainActivity.runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    holder.readerSeek.setProgress(mp.getCurrentPosition());
-
-
-                                }
-                            });
-                        }
-
-                    }
-                });
-
-                play_mp3.start();
-
+                AzkarPlayer c = new AzkarPlayer();
+                ReplaceFragment(mainActivity.getSupportFragmentManager(), c, R.id.main
+            , null, "");
+                c.azkar=categoryList.get(position);
             }
         });
-        holder.readerSeek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 
-
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-                mp.seekTo(seekBar.getProgress());
-
-            }
-        });
-        holder.teaderBtnPause.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mp.pause();
-
-            }
-        });
 
     }
 
@@ -154,15 +98,7 @@ public class AzkarAdapter extends RecyclerView.Adapter<AzkarAdapter.CategoriesVi
         return categoryList.size();
     }
 
-    @OnClick({R.id.teader_btn_play, R.id.teader_btn_download})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.teader_btn_play:
-                break;
-            case R.id.teader_btn_download:
-                break;
-        }
-    }
+
 
 
     public class CategoriesViewHolder extends RecyclerView.ViewHolder {
@@ -172,14 +108,10 @@ public class AzkarAdapter extends RecyclerView.Adapter<AzkarAdapter.CategoriesVi
         TextView teaderTvname;
         @BindView(R.id.teader_tvtitle)
         TextView teaderTvtitle;
-        @BindView(R.id.teader_btn_play)
-        ImageView teaderBtnPlay;
+
         @BindView(R.id.teader_btn_download)
         ImageView teaderBtnDownload;
-        @BindView(R.id.reader_seek)
-        SeekBar readerSeek;
-        @BindView(R.id.teader_btn_pause)
-        ImageView teaderBtnPause;
+
 
 
         public CategoriesViewHolder(@NonNull View itemView) {
@@ -189,6 +121,7 @@ public class AzkarAdapter extends RecyclerView.Adapter<AzkarAdapter.CategoriesVi
 
         }
     }
+
 
 
 }

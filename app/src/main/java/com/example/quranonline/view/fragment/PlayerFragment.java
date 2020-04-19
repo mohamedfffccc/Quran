@@ -1,46 +1,33 @@
 package com.example.quranonline.view.fragment;
 
 
-import android.Manifest;
-import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
-import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.PowerManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.SeekBar;
-import android.widget.Toast;
+import android.widget.TextView;
 
-import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.quranonline.R;
 import com.example.quranonline.data.service.DownloadTask;
 import com.example.quranonline.view.activity.MainActivity;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 
-import static com.example.quranonline.data.local.HelperMethod.dialog;
 import static com.example.quranonline.data.local.HelperMethod.shareVia;
-import static com.example.quranonline.data.local.HelperMethod.showDownloadProgress;
 
 
 /**
@@ -84,6 +71,8 @@ public class PlayerFragment extends BaseFragment {
     MainActivity ma;
     @BindView(R.id.btn_download)
     ImageView btnDownload;
+    @BindView(R.id.player_tv_surah_name)
+    TextView playerTvSurahName;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -91,6 +80,8 @@ public class PlayerFragment extends BaseFragment {
 
         View root = inflater.inflate(R.layout.fragment_player, container, false);
         ButterKnife.bind(this, root);
+        playerTvSurahName.setText("سورة " + surah_name);
+
         path = "https://server" + server_num + ".mp3quran.net/" + server_name + "/" + surah_num + ".mp3";
         ;
         setUpActivity();
@@ -117,7 +108,7 @@ public class PlayerFragment extends BaseFragment {
         return root;
     }
 
-    @OnClick({R.id.btn_download , R.id.player_btnplay, R.id.player_btstop, R.id.facebook, R.id.whatsup, R.id.twitter, R.id.instagram, R.id.pinteret})
+    @OnClick({R.id.btn_download, R.id.player_btnplay, R.id.player_btstop, R.id.facebook, R.id.whatsup, R.id.twitter, R.id.instagram, R.id.pinteret})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.player_btnplay:
@@ -147,10 +138,10 @@ public class PlayerFragment extends BaseFragment {
             case R.id.pinteret:
                 shareVia(getActivity(), pinterestu, path);
                 break;
-            case R.id.btn_download :
-                new com.example.quranonline.data.service.DownloadTask(getActivity() ,
-                        "/sdcard/OnlineQurn_Downloads/"+surah_num+"_"+server_name+".mp3")
-                        .execute( path);
+            case R.id.btn_download:
+                new DownloadTask(getActivity(),
+                        "/sdcard/OnlineQurn_Downloads/" + surah_num + "_" + server_name + ".mp3")
+                        .execute(path);
 
                 break;
         }
@@ -195,7 +186,6 @@ public class PlayerFragment extends BaseFragment {
         player.interrupt();
         super.onBack();
     }
-
 
 
 }
