@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SettingActivity">
+    tools:context=".view.activity.SettingActivity">
     <TextView
         android:id="@+id/activity_setting_tv_title"
         android:layout_width="wrap_content"
@@ -92,11 +92,19 @@
                 android:id="@+id/activity_setting_rb_rare"/>
         </RadioGroup>
     </LinearLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:id="@+id/iv_sally_ala_alnby"
+        android:layout_marginTop="50dp"
+        android:background="#000"
+        android:layout_height="100dp"
+        android:src="@drawable/footer"
+        android:layout_below="@id/activity_setting_lin_percentage"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="50dp"
         android:text="حفظ"
         android:layout_centerHorizontal="true"
         android:background="@drawable/bu_back"
@@ -104,6 +112,33 @@
         android:textSize="20sp"
         android:textColor="#fff"
         android:id="@+id/activity_setting_btn_save"/>
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/ativity_setting_tv_surah_alkahf"
+        android:layout_below="@id/iv_sally_ala_alnby"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#000"
+        android:text="قراءة سورة الكهف"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20sp"
+        android:fontFamily="@font/font5"/>
+    <Switch
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_sally_ala_alnby"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20sp"
+        android:id="@+id/activity_setting_sw_surah_kahf"
+        android:thumb="@drawable/ic_brightness_1_black_24dp"
+        android:track="@drawable/switchtrack"
+        android:checked="false"/>
+
 
 
 

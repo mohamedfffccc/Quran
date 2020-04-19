@@ -10,6 +10,7 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -19,21 +20,46 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".SettingActivity"></activity>
-
-        <service
-            android:name=".AzkarService"
-            android:enabled="true"
-            android:exported="true" />
-
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".view.activity.MainActivity">
+        <activity android:name=".view.activity.SohorAlarmCancelPage"></activity>
+        <activity android:name=".view.activity.SohorAlarm" />
+        <activity android:name=".view.activity.adanmonth.AdanMonth" />
+        <activity android:name=".view.activity.ElectronicSebha" />
+        <activity android:name=".view.activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver android:name=".data.reciver.InternetReciver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".data.reciver.SohorAlarmReciver">
+            <intent-filter>
+                <action android:name="com.medo.sohoralarm" />
+            </intent-filter>
+        </receiver>
+
+        <activity android:name=".view.activity.muslimadan.AdhanMoquite" />
+        <activity android:name=".view.activity.SettingActivity" />
+
+        <service
+            android:name=".data.service.AzkarService"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".data.service.KhafSurahServicer"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".data.service.SohorAlarmsSrvice"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".view.activity.MainActivity" />
     </application>
 
 </manifest>

@@ -1,7 +1,9 @@
-package com.example.quranonline;
+package com.example.quranonline.data.service;
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -13,6 +15,8 @@ import android.net.Uri;
 import android.os.Build;
 
 import androidx.core.app.NotificationCompat;
+
+import com.example.quranonline.R;
 
 /**
  * Helper class for showing and canceling online
@@ -26,7 +30,28 @@ public class OnlineNotification {
      * The unique identifier for this type of notification.
      */
     private static final String NOTIFICATION_TAG = "Online";
-
+    public  static  String [] AZKARS =  {"لا اله الا الله وحده لا شريك له له الملك وله الحمد وهو علي كل شيئ قدير"
+            ,"اعوذ بكلمات الله التامات من شر ما خلق"
+            ,"سبحان الله وبحمده سبحان الله العظيم",
+            "اللهم انت ربي لا اله الا انت خلقتني وانا عبدك وانا علي عهدك ووعدك ما استطعت " +
+                    "اعوذ بك من شر ما صنعت ابؤء لك بنعمتك علي وابوء بذنبي فاغفر لي فانه لا يغفر الذنوب الا انت"
+            ,"رضيت بالله ربا وبالاسلام دينا" +
+            " وبمحمد صلي الله عليه وسلم نبيا ورسولا"
+            ,"اللهم ما اصبح بي من نعمة او باحد من خلقك فمنك وحدك لا شريك لك فلك الحمد ولك الشكر"
+            ,"حسبي الله لا اله الا هو عليه توكلت وهو رب العرش العظيم",
+            "سبحان الله وبحمده عدد خلقه ورضا نفسه وزنة عرشه ومداد كلماته",
+            "اللهم اني اعوذ بك من الكفر والفقر واعوذ بك من عذاب القبر لا اله الا انت",
+            "يا حي يا قيوم برحمتك استغيث اصلح لي شاني كله ولا تكلني الي نفسي طرفة عين"
+            ,"اللهم انا نعوذ بك من ان نشرك بك شيئا نعلمه ونستغفرك لما لا نعلمه",
+            "استغفر الله الذي لا اله الا هو الحي القيوم واتوب اليه",
+            "سبحان الله وبحمده","استغفر الله واتوب اليه","الهم انت السلام و منك السلام تباركت ياذا الجلال والاكرام"
+            ,"اللهم اني اسالك علما نافعا ورزقا طيبا وعملا متقبلا"
+            ,"الهم اجرني من نار جهنم",
+            "اللهم اعني علي ذكرك و شكرك وحسن عبادتك"
+            ,"قل هو الله احد الله الصمد لم يلد ولم يولد ولم يكن لع كفوا احد"
+            , "قل اعوذ برب الناس ملك الناس اله الناس ممن شر الوسواس الخناس الذي يوسوس في صدور الناس من الجنه والناس",
+            "واعبد ربك حتي ياتيك اليقين","اللهم صلي علي سيدنا محمد وعلي اله وصحبه وسلم" ,
+            "اغتنم خمسا قبل خمس فراغك قبل شغلك , صحتك قبل سقمك , غناك قبل فقرك  , حياتك قبل موتك , شبابك قبل هرمك"};
     /**
      * Shows the notification, or updates a previously shown notification of
      * this type, with the given parameters.
@@ -44,17 +69,18 @@ public class OnlineNotification {
      */
     public static void notify(final Context context,
                               final String exampleString, final int number) {
+        int rand = (int) (Math.random() * AZKARS.length);
+
         final Resources res = context.getResources();
 
         // This image is used as the notification's large icon (thumbnail).
         // TODO: Remove this if your notification has no relevant thumbnail.
-        final Bitmap picture = BitmapFactory.decodeResource(res, R.drawable.example_picture);
+        final Bitmap picture = BitmapFactory.decodeResource(res, R.drawable.quran);
 
 
         final String ticker = exampleString;
         final String title = "الا بـذكر الـله تطمـئن القـلوب";
-        final String text = res.getString(
-                R.string.online_notification_placeholder_text_template, exampleString);
+        final String text = AZKARS[rand];
 
         final NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
 
@@ -108,7 +134,7 @@ public class OnlineNotification {
                 .setStyle(new NotificationCompat.BigTextStyle()
                         .bigText(text)
                         .setBigContentTitle(title)
-                        .setSummaryText("Dummy summary text"))
+                        .setSummaryText("اذكر الله"))
 
                 // Example additional actions for this notification. These will
                 // only show on devices running Android 4.1 or later, so you
@@ -123,7 +149,7 @@ public class OnlineNotification {
                                 0,
                                 Intent.createChooser(new Intent(Intent.ACTION_SEND)
                                         .setType("text/plain")
-                                        .putExtra(Intent.EXTRA_TEXT, "Dummy text"), "Dummy title"),
+                                        .putExtra(Intent.EXTRA_TEXT,  text), "اذكر الله"),
                                 PendingIntent.FLAG_UPDATE_CURRENT))
                 .addAction(
                         R.drawable.ic_action_stat_reply,
@@ -132,6 +158,15 @@ public class OnlineNotification {
 
                 // Automatically dismiss the notification when it is touched.
                 .setAutoCancel(true);
+        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.O) {
+            String channel_id = "Online_id";
+            @SuppressLint("WrongConstant") NotificationChannel channel = new NotificationChannel(channel_id,
+                    "channel human readable title"
+                    ,NotificationManager.IMPORTANCE_DEFAULT);
+
+            builder.setChannelId(channel_id);
+
+        }
 
         notify(context, builder.build());
     }

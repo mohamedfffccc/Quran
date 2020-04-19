@@ -61,6 +61,8 @@ public class SurahFragment extends BaseFragment {
                 } else if (LoadData(getActivity(), "action").equals("read")) {
                     AyahFragment fragment = new AyahFragment();
                     fragment.surahNumber = Integer.parseInt(data.get(position).server);
+                    fragment.name=data.get(position).name;
+                    fragment.type = data.get(position).type;
 
                     ReplaceFragment(getActivity().getSupportFragmentManager(), fragment, R.id.main, null, "medo");
                 } else if (LoadData(getActivity(), "action").equals("tafseer")) {

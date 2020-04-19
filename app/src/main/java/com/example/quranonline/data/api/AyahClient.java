@@ -7,6 +7,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class AyahClient {
     public static Retrofit retrofit,retrofit2,retrofit3;
+    private static Retrofit retrofit4;
+    private static Retrofit retrofit5;
+
     public static AyaApi getClient()
     {
         retrofit=new Retrofit.Builder().baseUrl("https://unpkg.com/")
@@ -29,5 +32,21 @@ public class AyahClient {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         return  retrofit3.create(AyaApi.class);
+    }
+    public static AyaApi getAdan()
+    {
+        retrofit4=new Retrofit.Builder()
+                .baseUrl("https://api.aladhan.com/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        return  retrofit4.create(AyaApi.class);
+    }
+    public static AyaApi getAdanMonth()
+    {
+        retrofit5=new Retrofit.Builder()
+                .baseUrl("http://api.aladhan.com/v1/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        return  retrofit5.create(AyaApi.class);
     }
 }

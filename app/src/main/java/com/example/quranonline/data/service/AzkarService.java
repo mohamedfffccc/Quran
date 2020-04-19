@@ -1,16 +1,14 @@
-package com.example.quranonline;
+package com.example.quranonline.data.service;
 
 import android.app.Service;
 import android.content.Intent;
 import android.media.MediaPlayer;
-import android.media.Ringtone;
-import android.media.RingtoneManager;
-import android.net.Uri;
 import android.os.IBinder;
-import android.util.Log;
 import android.widget.Toast;
 
-import java.net.URI;
+import com.example.quranonline.R;
+
+import static com.example.quranonline.data.local.HelperMethod.notifyAzkar;
 
 public class AzkarService extends Service {
     public AzkarService() {
@@ -27,6 +25,8 @@ public class AzkarService extends Service {
         new OnlineNotification().notify(getApplicationContext() , "" , 0);
         MediaPlayer mp = MediaPlayer.create(getApplicationContext() , R.raw.sound);
         mp.start();
+        notifyAzkar(getApplicationContext() );
+        new OnlineNotification().notify(getApplicationContext() , "صلي علي محمد" , 0);
 
 //        try{
 //            Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);

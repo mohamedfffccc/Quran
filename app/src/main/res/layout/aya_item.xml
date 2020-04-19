@@ -7,8 +7,16 @@ android:background="@drawable/aya_back"
     <RelativeLayout
         android:id="@+id/rela1"
         android:layout_width="match_parent"
+        android:background="#f7f8e7"
         android:layout_height="wrap_content"
         >
+        <ImageView
+            android:layout_width="30sp"
+            android:layout_height="30sp"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/btn_share"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/ic_share_black_24dp"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -20,33 +28,34 @@ android:background="@drawable/aya_back"
             android:fontFamily="@font/quran"
             android:layout_margin="10dp"
             android:layout_alignParentRight="true"/>
-        <Button
-            android:layout_marginTop="20dp"
-            android:background="@drawable/bu_back"
-            android:layout_width="wrap_content"
-            android:fontFamily="@font/bold"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/ayatext"
-            android:layout_alignParentRight="true"
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:textSize="30dp"
+            android:id="@+id/ayanum"
+            android:gravity="center"
+            android:text= "1"
+            android:textColor="#000000"
             android:textStyle="bold"
-            android:layout_margin="@dimen/dim_5dp"
-            android:textSize="20sp"
-            android:textColor="#000"
-            android:id="@+id/translate"
-            android:text="ترجمــة"/>
+            android:fontFamily="@font/quran"
+            android:background="@drawable/ayanum"
+            android:layout_margin="10dp"
+            android:layout_below="@id/ayatext"
+            android:layout_alignParentRight="true"/>
+
         <Button
             android:background="@drawable/bu_back"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
 
             android:layout_width="wrap_content"
             android:fontFamily="@font/bold"
             android:layout_height="wrap_content"
             android:layout_below="@id/ayatext"
-            android:layout_alignParentLeft="true"
             android:textStyle="bold"
             android:layout_margin="@dimen/dim_5dp"
             android:textSize="20sp"
-            android:textColor="#000"
+            android:textColor="#fff"
             android:id="@+id/tafseermusr"
             android:text="تفسير ميسر"/>
 
@@ -62,17 +71,19 @@ android:background="@drawable/aya_back"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
+
                 android:layout_margin="10dp"
 
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
+
                 android:id="@+id/ayatexttranslation"
                 android:text="dgsjvdjdl"
-                android:textColor="#840027"
+                android:textColor="#2b6870"
                 android:textStyle="bold"
-                android:fontFamily="@font/quran"
+                android:fontFamily="@font/translation"
                 android:layout_marginTop="20sp"
                 android:layout_alignParentLeft="true"/>
             <TextView
@@ -82,11 +93,12 @@ android:background="@drawable/aya_back"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 android:id="@+id/ayatafseer"
-                android:textColor="#840027"
+                android:textColor="#2b6870"
                 android:layout_below="@id/ayatexttranslation"
                 android:textStyle="bold"
-                android:fontFamily="@font/quran"
-android:layout_marginTop="20sp"                android:layout_alignParentRight="true"/>
+                android:fontFamily="@font/translation"
+                android:layout_marginTop="20sp"
+                android:layout_alignParentRight="true"/>
 
         </RelativeLayout>
     </ScrollView>

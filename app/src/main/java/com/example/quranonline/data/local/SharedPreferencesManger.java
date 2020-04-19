@@ -2,8 +2,17 @@ package com.example.quranonline.data.local;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
+import android.widget.Toast;
 
+import com.example.quranonline.data.model.salatlist.Datum;
+import com.example.quranonline.data.model.salatlist.SalatList;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class SharedPreferencesManger {
 
@@ -67,6 +76,92 @@ public class SharedPreferencesManger {
             editor.clear();
             editor.commit();
         }
+    }
+    public static void SaveData(Activity activity, String data_Key, Object data_Value) {
+        setSharedPreferences(activity);
+        if (sharedPreferences != null) {
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            Gson gson = new Gson();
+            String StringData = gson.toJson(data_Value);
+            editor.putString(data_Key, StringData);
+            editor.commit();
+        }
+    }
+
+    public static void save(Activity activity, SalatList prayer) {
+        SaveData(activity, USER_DATA, prayer);
+    }
+
+    public static SalatList loadPrayings(Activity activity) {
+        SalatList salatlist = null;
+
+        Gson gson = new Gson();
+        salatlist = gson.fromJson(LoadData(activity, USER_DATA), SalatList.class);
+
+        return salatlist;
+    }
+    public static void saveList(Activity activity, String datakey, List<Datum> data) {
+        setSharedPreferences(activity);
+        if (sharedPreferences != null) {
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            HashSet<Datum> set = new HashSet<Datum>();
+
+            set.addAll(data);
+//            editor.putStringSet("categories", set);
+            editor.commit();
+        } else {
+            setSharedPreferences(activity);
+        }
+
+    }
+
+    public static Set<String> LoadList(Activity activity, String data_Key) {
+        setSharedPreferences(activity);
+        if (sharedPreferences != null) {
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+        } else {
+            setSharedPreferences(activity);
+        }
+
+        return sharedPreferences.getStringSet(data_Key, null);
+    }
+    public static <Datum>   void setList(Activity activity , String key , List<Datum> data)
+    {
+        setSharedPreferences(activity);
+        Gson gson = new Gson();
+        String json = gson.toJson(data);
+        set(key,json);
+        Toast.makeText(activity,"saved" , Toast.LENGTH_LONG).show();
+    }
+
+    private static void set(String key, String value ) {
+        if (sharedPreferences != null) {
+
+
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString(key , value);
+            editor.commit();
+        }
+
+
+
+    }
+    public static List<Datum> getTimings(Activity activity , String key)
+    {
+        setSharedPreferences(activity);
+
+        if (sharedPreferences != null) {
+            Gson gson = new Gson();
+            List<Datum> data;
+            String v = sharedPreferences.getString(key,"0");
+            Type type = new TypeToken<List<Datum>>()
+            {
+
+            }.getType();
+            data=gson.fromJson(v , type);
+            return data;
+        }
+        return  null;
     }
 
 }

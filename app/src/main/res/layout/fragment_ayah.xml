@@ -1,17 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff"
     tools:context=".view.fragment.ayah.AyahFragment">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_margin="@dimen/dim_5dp"
+        android:fontFamily="@font/kofy3"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="25dp"
+        android:textColor="#000"
+        android:id="@+id/tv_surah_name"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_margin="@dimen/dim_5dp"
+        android:fontFamily="@font/kofy3"
+        android:layout_alignParentLeft="true"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="25dp"
+        android:textColor="#000"
+        android:id="@+id/tv_surah_type"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_margin="@dimen/dim_5dp"
+        android:fontFamily="@font/kofy3"
+        android:layout_alignParentRight="true"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="25dp"
+        android:textColor="#000"
+        android:id="@+id/tv_surah_aya_nums"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 
+        android:layout_below="@id/tv_surah_name"
+
         android:layout_margin="10dp"
         android:id="@+id/ayarv"/>
 
 
-</FrameLayout>
+</RelativeLayout>
