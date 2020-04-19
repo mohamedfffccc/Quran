@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    tools:context=".view.activity.SplashActivity">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_marginTop="100dp"
+        android:layout_height="300dp"
+        android:src="@drawable/gre"/>
+    <ProgressBar
+        android:visibility="gone"
+        android:layout_width="100dp"
+        android:id="@+id/pr_loading"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="150dp"/>
+    <LinearLayout
+        android:visibility="gone"
+        android:background="#745"
+        android:id="@+id/linear_check_internet"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="انت غير متصل بالانترنت"
+            android:fontFamily="@font/font5"
+            android:layout_margin="10dp"
+            android:textSize="20sp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:drawableStart="@drawable/ic_warning_black_24dp"
+            android:textStyle="bold"
+            android:textColor="#fff"/>
+       <LinearLayout
+           android:layout_width="wrap_content"
+           android:layout_height="match_parent"
+           android:orientation="vertical"
+           >
+           <Button
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textColor="#fff"
+               android:layout_gravity="center"
+               android:layout_margin="10dp"
+               android:background="#951264"
+               android:layout_weight="1"
+               android:fontFamily="@font/font5"
+               android:textStyle="bold"
+               android:textSize="20sp"
+               android:text="اعد المحاولة"
+               android:id="@+id/btn_try_again"/>
+           <Button
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textColor="#fff"
+               android:layout_gravity="center"
+               android:layout_margin="10dp"
+               android:background="#245872"
+               android:layout_weight="1"
+               android:fontFamily="@font/font5"
+               android:textStyle="bold"
+               android:textSize="20sp"
+               android:text=" استمرار"
+               android:id="@+id/btn_continue"/>
+
+       </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
