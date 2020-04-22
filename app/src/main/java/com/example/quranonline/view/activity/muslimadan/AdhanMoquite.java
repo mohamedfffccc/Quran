@@ -29,8 +29,7 @@ import static java.util.Locale.ENGLISH;
 
 public class AdhanMoquite extends AppCompatActivity implements SensorEventListener {
 
-    @BindView(R.id.activity_adan_tv_day)
-    TextView activityAdanTvDay;
+
     @BindView(R.id.activity_adan_tv_date)
     TextView activityAdanTvDate;
     @BindView(R.id.fajr_tv)

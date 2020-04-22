@@ -57,6 +57,8 @@ public class SohorAlarm extends AppCompatActivity {
             if (LoadData(this, SOHOR_ALARM).equals("true")) {
                 activitySohorSw.setChecked(true);
                 activitySohorTp.setVisibility(View.VISIBLE);
+                activitySohorTp.setHour(Integer.parseInt(LoadData(this , SOHOR_HOUR)));
+                activitySohorTp.setMinute(Integer.valueOf(LoadData(this , SOHOR_MINUTE)));
 
             } else if (LoadData(this, SOHOR_ALARM).equals("false")) {
                 activitySohorSw.setChecked(false);
@@ -132,8 +134,8 @@ public class SohorAlarm extends AppCompatActivity {
         if (LoadData(this , SOHOR_ALARM).equals("true")) {
             startSohorAlarm(Integer.parseInt(LoadData(this , SOHOR_HOUR))
                     ,Integer.parseInt(LoadData(this , SOHOR_MINUTE)));
-            Toast.makeText(this, "تم ضبط منبه السحور علي" + LoadData(this , SOHOR_HOUR)
-                    + " : " + LoadData(this , SOHOR_MINUTE), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "تم ضبط منبه السحور علي الساعة " + LoadData(this , SOHOR_MINUTE)
+                    + " : " + LoadData(this , SOHOR_HOUR), Toast.LENGTH_SHORT).show();
         }
         }
 

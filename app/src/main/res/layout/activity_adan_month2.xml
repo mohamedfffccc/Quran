@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/gre"
+    android:background="@drawable/hhhhhhhhhhh"
     android:layout_height="match_parent"
     tools:context=".view.activity.adanmonth.AdanMonth">
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/prayings_rv"/>
+    <ImageView
+        android:layout_marginTop="20sp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_200sdp"
+        android:src="@drawable/comoas2"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:id="@+id/imv_compass"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

@@ -15,13 +15,14 @@ import retrofit2.Response;
 import static com.example.quranonline.data.api.AyahClient.getAdanMonth;
 
 public class AdanMonthViewModel extends ViewModel {
-    MutableLiveData<List<Datum>> data = new MutableLiveData<>();
+    MutableLiveData<SalatList> data = new MutableLiveData<>();
     public void getPrayings(String address , int method , String month , String year)
     {
         getAdanMonth().getTimings(address , method , month , year).enqueue(new Callback<SalatList>() {
             @Override
             public void onResponse(Call<SalatList> call, Response<SalatList> response) {
-                data.setValue(response.body().getData());
+                data.setValue(response.body());
+
             }
 
             @Override

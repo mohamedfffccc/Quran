@@ -23,6 +23,7 @@ import android.widget.Toast;
 import androidx.core.app.ActivityCompat;
 
 import com.example.quranonline.R;
+import com.example.quranonline.view.activity.adanmonth.AdanMonth;
 import com.example.quranonline.view.activity.muslimadan.AdhanMoquite;
 import com.example.quranonline.view.fragment.AuthorFragment;
 import com.example.quranonline.view.fragment.SurahFragment;
@@ -124,7 +125,7 @@ public class MainActivity extends BaseActivity {
                 showDialoge();
                 break;
             case R.id.salat_btn:
-                Intent salat_i = new Intent(this, AdhanMoquite.class);
+                Intent salat_i = new Intent(this, AdanMonth.class);
                 startActivity(salat_i);
                 break;
             case  R.id.electronic_btn:

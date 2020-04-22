@@ -65,13 +65,14 @@ public class TimingAdapter extends RecyclerView.Adapter<TimingAdapter.Categories
     public void onBindViewHolder(@NonNull CategoriesViewHolder holder, int position) {
         holder.activityAdanTvDateName.setText(categoryList.get(position).getDate().getGregorian().getDate());
         holder.activityAdanTvDate.setText(getDayName(categoryList.get(position).getDate().getGregorian().getWeekday().getEn()));
-        holder.fajrTv.setText("الفجر                  " + setTimings(categoryList.get(position).getTimings().getFajr()) + "            AM");
-        holder.sunsetTv.setText("الشروق                " + setTimings(categoryList.get(position).getTimings().getSunrise()) + "        AM");
-        holder.duhrTv.setText("الظهر                  " + setTimings(categoryList.get(position).getTimings().getDhuhr()) + "           AM");
-        holder.asrTv.setText("العصر                   " + setTimings(categoryList.get(position).getTimings().getAsr()) + "             PM");
-        holder.magribTv.setText("المغرب                " + setTimings(categoryList.get(position).getTimings().getMaghrib()) + "        PM");
-        holder.ishaTv.setText("العشاء                  " + setTimings(categoryList.get(position).getTimings().getIsha()) + "           PM");
-
+        holder.fajrTv.setText("الفجر   " + setTimings(categoryList.get(position).getTimings().getFajr()) + "  AM");
+        holder.sunsetTv.setText("الشروق   " + setTimings(categoryList.get(position).getTimings().getSunrise()) + "  AM");
+        holder.duhrTv.setText("الظهر   " + setTimings(categoryList.get(position).getTimings().getDhuhr()) + "  AM");
+        holder.asrTv.setText("العصر   " + setTimings(categoryList.get(position).getTimings().getAsr()) + "  PM");
+        holder.magribTv.setText( "المغرب  " +
+                "" + setTimings(categoryList.get(position).getTimings().getMaghrib()) + "  PM");
+        holder.ishaTv.setText("العشاء   " + setTimings(categoryList.get(position).getTimings().getIsha()) + "  PM");
+        holder.ivCompass.setVisibility(View.GONE);
 
     }
     public String setTimings(String time)
@@ -121,8 +122,7 @@ public class TimingAdapter extends RecyclerView.Adapter<TimingAdapter.Categories
 
 
     public class CategoriesViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.activity_adan_tv_day)
-        TextView activityAdanTvDay;
+
         @BindView(R.id.activity_adan_tv_date)
         TextView activityAdanTvDate;
         @BindView(R.id.activity_adan_tv_date_name)

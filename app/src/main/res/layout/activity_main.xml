@@ -4,10 +4,91 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:id="@+id/main"
-    android:background="@drawable/sppp"
+    android:background="@drawable/sppp2"
     android:layout_height="match_parent"
     tools:context=".view.activity.MainActivity">
-   
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/_300sdp"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_110sdp"
+            android:layout_marginTop="@dimen/_10sdp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/_90sdp"
+                android:layout_height="@dimen/_110sdp"
+                android:layout_gravity="start|center"
+                android:layout_marginStart="@dimen/_13sdp"
+                android:background="@drawable/imag_quran"
+                android:id="@+id/hetly_imag_catgry" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/wegrce_catgry_imag"
+                android:layout_width="108dp"
+                android:layout_height="@dimen/_110sdp"
+                android:layout_gravity="center"
+                android:background="@drawable/imag_raqe_shray"
+
+                />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/_90sdp"
+                android:layout_height="@dimen/_110sdp"
+                android:layout_marginStart="@dimen/_200sdp"
+                android:id="@+id/fry_catgry"
+                android:background="@drawable/imag_akreb_masged"
+
+                />
+
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_110sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+
+            >
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/_90sdp"
+                android:layout_height="@dimen/_110sdp"
+                android:layout_gravity="start|center"
+                android:layout_marginStart="@dimen/_13sdp"
+                android:id="@+id/book_me_catgry_imag"
+                android:background="@drawable/imag_asker_new"
+
+                />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/_90sdp"
+                android:layout_height="@dimen/_110sdp"
+                android:layout_gravity="center"
+                android:id="@+id/get_orgnez_imag"
+
+                android:background="@drawable/imag_wedoaa"
+
+                />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/_90sdp"
+                android:layout_height="@dimen/_110sdp"
+                android:id="@+id/solve_it_catgry_imag"
+                android:layout_marginStart="@dimen/_200sdp"
+                android:background="@drawable/imag_elmoazin"
+
+                />
+
+
+        </FrameLayout>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 
 
@@ -213,6 +294,7 @@
         android:src="@drawable/ic_menu_black_24dp"
         android:layout_alignParentRight="true"
         android:id="@+id/menu_btn"/>
+
 
 
 
