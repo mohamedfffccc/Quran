@@ -2,11 +2,13 @@ package com.example.quranonline.data.local;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -19,6 +21,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.PowerManager;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -34,6 +37,9 @@ import androidx.fragment.app.FragmentTransaction;
 
 
 import com.example.quranonline.R;
+import com.example.quranonline.data.service.AdanService;
+import com.example.quranonline.data.service.AzkarService;
+import com.example.quranonline.view.activity.SettingActivity;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -43,7 +49,12 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
+
+import static android.content.Context.ALARM_SERVICE;
 
 public class HelperMethod {
 
@@ -73,6 +84,7 @@ public class HelperMethod {
             "واعبد ربك حتي ياتيك اليقين","اللهم صلي علي سيدنا محمد وعلي اله وصحبه وسلم" +
             "اغتنم خمسا قبل خمس فراغك قبل شغلك , صحتك قبل سقمك , غناك قبل فقرك  , حياتك قبل موتك , شبابك قبل هرمك"};
     private static NetworkInfo nInfo;
+    private static Intent adan_i;
 
 
     public static void showProgressDialog(Activity activity, String title) {
@@ -186,12 +198,30 @@ public class HelperMethod {
             manager.createNotificationChannel(channel);
             builder.setChannelId(channel_id);
 
+
         }
 //        Uri uri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 //        builder.setSound(uri);
         manager.notify(id,builder.build());
         id++;
 
+    }
+    public static void startAlarmService(Context context ,String time) {
+        adan_i = new Intent(context, AdanService.class);
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        PendingIntent pendingIntent = PendingIntent.getService(context, 0, adan_i, 0);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
+        String t = simpleDateFormat.format(new Date());
+        String[] times = time.split(":");
+        // T
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(times[0]));
+        calendar.set(Calendar.MINUTE, Integer.parseInt(times[1]));
+        calendar.set(Calendar.SECOND, 00);
+        Log.d("adan" , "الساعة " + Integer.parseInt(times[0]) +"والدقيقة "+Integer.parseInt(times[1]));
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
+                AlarmManager.INTERVAL_DAY, pendingIntent);
     }
 
 

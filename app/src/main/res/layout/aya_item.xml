@@ -55,7 +55,7 @@ android:background="@drawable/aya_back"
             android:textStyle="bold"
             android:layout_margin="@dimen/dim_5dp"
             android:textSize="20sp"
-            android:textColor="#fff"
+            android:textColor="#000"
             android:id="@+id/tafseermusr"
             android:text="تفسير ميسر"/>
 

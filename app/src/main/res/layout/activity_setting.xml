@@ -110,10 +110,9 @@
         android:background="@drawable/bu_back"
         android:textStyle="bold"
         android:textSize="20sp"
-        android:textColor="#fff"
+        android:textColor="#000"
         android:id="@+id/activity_setting_btn_save"/>
     <TextView
-        android:visibility="gone"
         android:id="@+id/ativity_setting_tv_surah_alkahf"
         android:layout_below="@id/iv_sally_ala_alnby"
         android:layout_width="wrap_content"
@@ -127,7 +126,6 @@
         android:layout_marginTop="20sp"
         android:fontFamily="@font/font5"/>
     <Switch
-        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/iv_sally_ala_alnby"

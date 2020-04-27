@@ -3,297 +3,428 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="#02ff9553"
+
     android:id="@+id/main"
-    android:background="@drawable/sppp2"
     android:layout_height="match_parent"
     tools:context=".view.activity.MainActivity">
-
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <ScrollView
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:layout_marginTop="@dimen/_300sdp"
-        android:layout_height="match_parent">
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_110sdp"
-            android:layout_marginTop="@dimen/_10sdp">
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="@dimen/_90sdp"
-                android:layout_height="@dimen/_110sdp"
-                android:layout_gravity="start|center"
-                android:layout_marginStart="@dimen/_13sdp"
-                android:background="@drawable/imag_quran"
-                android:id="@+id/hetly_imag_catgry" />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/wegrce_catgry_imag"
-                android:layout_width="108dp"
-                android:layout_height="@dimen/_110sdp"
-                android:layout_gravity="center"
-                android:background="@drawable/imag_raqe_shray"
-
-                />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="@dimen/_90sdp"
-                android:layout_height="@dimen/_110sdp"
-                android:layout_marginStart="@dimen/_200sdp"
-                android:id="@+id/fry_catgry"
-                android:background="@drawable/imag_akreb_masged"
-
-                />
-
-
-        </FrameLayout>
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_110sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-
-            >
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="@dimen/_90sdp"
-                android:layout_height="@dimen/_110sdp"
-                android:layout_gravity="start|center"
-                android:layout_marginStart="@dimen/_13sdp"
-                android:id="@+id/book_me_catgry_imag"
-                android:background="@drawable/imag_asker_new"
-
-                />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="@dimen/_90sdp"
-                android:layout_height="@dimen/_110sdp"
-                android:layout_gravity="center"
-                android:id="@+id/get_orgnez_imag"
-
-                android:background="@drawable/imag_wedoaa"
-
-                />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="@dimen/_90sdp"
-                android:layout_height="@dimen/_110sdp"
-                android:id="@+id/solve_it_catgry_imag"
-                android:layout_marginStart="@dimen/_200sdp"
-                android:background="@drawable/imag_elmoazin"
-
-                />
-
-
-        </FrameLayout>
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
+        android:layout_height="match_parent"
+        >
 
 
 
-<!--    <TextView-->
-<!--        android:textStyle="bold"-->
-<!--        android:fontFamily="@font/kofy3"-->
-<!--        android:textSize="50sp"-->
-
-<!--        android:layout_centerHorizontal="true"-->
-<!--        android:textColor="#fff"-->
-<!--        android:text="بسم اللــه الرحمــن الرحــيم"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:gravity="center"-->
-<!--        android:layout_height="200dp"-->
-
-<!--        android:layout_marginTop="50dp"/>-->
     <LinearLayout
-        android:layout_below="@id/menu_btn"
         android:id="@+id/linear_options"
-        android:layout_width="240dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentRight="true"
         android:orientation="vertical"
-        android:visibility="gone">
+        android:visibility="visible">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            >
+            <TextView
+                android:gravity="center_vertical"
+                android:background="@drawable/bu_back"
+                android:layout_marginTop="@dimen/_15sdp"
 
+
+
+                android:layout_width="match_parent"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/pppppppppppppp"
+                android:textSize="@dimen/_15sdp"
+
+                android:textColor="#2b6870"
+
+                android:layout_height="@dimen/_50sdp"
+                android:text="قراءة قران(ترجمة وتفسير بالانترنت)"
+                android:layout_margin="5dp"
+                android:id="@+id/readbtn"/>
+            <ImageView
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_alignParentLeft="true"
+                android:src="@drawable/ic_mode_mushaf_3"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            >
+            <TextView
+                android:background="@drawable/bu_back"
+                android:layout_marginTop="20sp"
+                android:gravity="center_vertical"
+
+
+
+                android:layout_width="match_parent"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/pppppppppppppp"
+                android:textSize="@dimen/_15sdp"
+
+                android:textColor="#2b6870"
+
+                android:layout_height="@dimen/_50sdp"
+                android:text="سماع قران(يتطلب انترنت)"
+                android:layout_margin="5dp"
+                android:id="@+id/listenbtn"/>
+            <ImageView
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_alignParentLeft="true"
+                android:src="@drawable/ic_tasmee_mode_4"/>
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            >
+            <TextView
+                android:background="@drawable/bu_back"
+                android:layout_marginTop="20sp"
+
+                android:gravity="center_vertical"
+
+
+                android:layout_width="match_parent"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/pppppppppppppp"
+                android:textSize="@dimen/_15sdp"
+
+                android:textColor="#2b6870"
+                android:layout_height="@dimen/_50sdp"
+                android:text=" اذكار الصباح و المساء(يتطلب انترنت)"
+                android:layout_margin="5dp"
+                android:id="@+id/listenazkarbtn"/>
+            <ImageView
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_alignParentLeft="true"
+                android:src="@drawable/azkarsabah"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            >
+            <TextView
+                android:background="@drawable/bu_back"
+                android:layout_marginTop="20sp"
+                android:gravity="center_vertical"
+
+
+
+                android:layout_width="match_parent"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/pppppppppppppp"
+                android:textSize="@dimen/_15sdp"
+
+                android:textColor="#2b6870"
+                android:layout_height="@dimen/_50sdp"
+                android:text="اعدادات الاذكار"
+                android:layout_margin="5dp"
+                android:id="@+id/btn_setting"/>
+            <ImageView
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_alignParentLeft="true"
+                android:src="@drawable/ic_tasmee_mode_4"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            >
+            <TextView
+                android:background="@drawable/bu_back"
+                android:layout_marginTop="50dp"
+
+                android:gravity="center_vertical"
+
+
+                android:layout_width="match_parent"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/pppppppppppppp"
+                android:textSize="@dimen/_15sdp"
+
+                android:textColor="#2b6870"
+                android:layout_height="@dimen/_50sdp"
+                android:text="مواقيت الصلاة"
+                android:layout_margin="5dp"
+                android:id="@+id/salat_btn"/>
+            <ImageView
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_alignParentLeft="true"
+                android:src="@drawable/ic_prayer_time_2"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            >
+            <TextView
+                android:background="@drawable/bu_back"
+                android:layout_marginTop="50dp"
+
+                android:gravity="center_vertical"
+
+
+                android:layout_width="match_parent"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/pppppppppppppp"
+                android:textSize="@dimen/_15sdp"
+
+                android:textColor="#2b6870"
+                android:layout_height="@dimen/_50sdp"
+                android:text="اتجاه القبلة"
+                android:layout_margin="5dp"
+                android:id="@+id/qibla_btn"/>
+            <ImageView
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_alignParentLeft="true"
+                android:src="@drawable/ic_mode_qibla_2"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            >
+            <TextView
+                android:background="@drawable/bu_back"
+                android:layout_marginTop="50dp"
+                android:gravity="center_vertical"
+
+
+
+                android:layout_width="match_parent"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/pppppppppppppp"
+                android:textSize="@dimen/_15sdp"
+
+                android:textColor="#2b6870"
+                android:layout_height="@dimen/_50sdp"
+                android:text="المسبحة الالكترونية"
+                android:layout_margin="5dp"
+                android:id="@+id/electronic_btn"/>
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_alignParentLeft="true"
+                android:src="@drawable/ic_quran_background_yellow"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            >
+            <TextView
+                android:background="@drawable/bu_back"
+                android:layout_marginTop="50dp"
+
+                android:gravity="center_vertical"
+
+
+                android:layout_width="match_parent"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/pppppppppppppp"
+                android:textSize="@dimen/_15sdp"
+
+                android:textColor="#2b6870"
+                android:layout_height="@dimen/_50sdp"
+                android:text="منبه السحور"
+                android:layout_margin="5dp"
+                android:id="@+id/sohor_alarm_btn"/>
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_alignParentLeft="true"
+                android:src="@drawable/ic_access_alarms_black_24dp"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            >
+            <TextView
+                android:background="@drawable/bu_back"
+                android:layout_marginTop="50dp"
+
+
+                android:gravity="center_vertical"
+
+                android:layout_width="match_parent"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/pppppppppppppp"
+                android:textSize="@dimen/_15sdp"
+
+                android:textColor="#2b6870"
+                android:layout_height="@dimen/_50sdp"
+                android:text="دعاء ختم القران"
+                android:layout_margin="5dp"
+                android:id="@+id/doaa_btn"/>
+
+
+
+            <ImageView
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_alignParentLeft="true"
+                android:src="@drawable/ic_tasmee_mode_5"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            >
         <TextView
-            android:id="@+id/fragment_dealer_home_tv_departments"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:fontFamily="@font/font5"
-            android:text="القائمة"
-            android:textColor="#fff"
-            android:textSize="20sp"
-            />
-        <Button
             android:background="@drawable/bu_back"
             android:layout_marginTop="50dp"
 
+            android:gravity="center_vertical"
 
 
             android:layout_width="match_parent"
             android:layout_centerHorizontal="true"
-            android:fontFamily="@font/font5"
-            android:textSize="15sp"
-            android:drawableStart="@drawable/ic_import_contacts_black_24dp"
+            android:fontFamily="@font/pppppppppppppp"
+            android:textSize="@dimen/_15sdp"
 
-            android:textColor="#ffffff"
-
-            android:layout_height="50dp"
-            android:text="قراءة قران(ترجمة وتفسير بالانترنت)"
+            android:textColor="#2b6870"
+            android:layout_height="@dimen/_50sdp"
+            android:text="اقرب مسجد"
             android:layout_margin="5dp"
-            android:id="@+id/readbtn"/>
-        <Button
-            android:background="@drawable/bu_back"
-            android:layout_marginTop="20sp"
+            android:id="@+id/nearest_mosque_btn"/>
+        <ImageView
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/ic_prayer_time_2"/>
+        </RelativeLayout>
 
-
-
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_centerHorizontal="true"
-            android:fontFamily="@font/font5"
-            android:textSize="15sp"
-            android:drawableStart="@drawable/ic_audiotrack_black_24dp"
-
-            android:textColor="#ffffff"
-
-            android:layout_height="wrap_content"
-            android:text="سماع قران(يتطلب انترنت)"
-            android:layout_margin="5dp"
-            android:id="@+id/listenbtn"/>
-        <Button
-            android:background="@drawable/bu_back"
-            android:layout_marginTop="20sp"
+            android:layout_height="@dimen/_50sdp"
+            >
+            <TextView
+                android:background="@drawable/bu_back"
+                android:layout_marginTop="50dp"
 
 
+                android:gravity="center_vertical"
 
+                android:layout_width="match_parent"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/pppppppppppppp"
+                android:textSize="@dimen/_15sdp"
+
+                android:textColor="#2b6870"
+                android:layout_height="@dimen/_50sdp"
+                android:text="قيم التطبيق"
+                android:layout_margin="5dp"
+                android:id="@+id/val_btn"/>
+
+
+
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_alignParentLeft="true"
+                android:src="@drawable/ic_star_black_24dp"/>
+
+        </RelativeLayout>
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_centerHorizontal="true"
-            android:fontFamily="@font/font5"
-            android:textSize="15sp"
-            android:drawableStart="@drawable/ic_description_black_24dp"
-
-            android:textColor="#ffffff"
-            android:layout_height="50dp"
-            android:text="تفسير الجلالين"
-            android:layout_margin="5dp"
-            android:id="@+id/tafseerglalin"/>
-        <Button
-            android:background="@drawable/bu_back"
-            android:layout_marginTop="20sp"
+            android:layout_height="@dimen/_50sdp"
+            >
+            <TextView
+                android:background="@drawable/bu_back"
+                android:layout_marginTop="20sp"
 
 
+                android:gravity="center_vertical"
 
+                android:layout_width="match_parent"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/pppppppppppppp"
+                android:textSize="@dimen/_15sdp"
+
+                android:textColor="#2b6870"
+                android:layout_height="@dimen/_50sdp"
+                android:text=" مشاركة"
+                android:layout_margin="5dp"
+                android:id="@+id/share_btn"/>
+            <ImageView
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_alignParentLeft="true"
+                android:src="@drawable/ic_similarities_mode_3"/>
+
+        </RelativeLayout>
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_centerHorizontal="true"
-            android:fontFamily="@font/font5"
-            android:textSize="15sp"
-            android:drawableStart="@drawable/ic_audiotrack_black_24dp"
-
-            android:textColor="#ffffff"
-            android:layout_height="wrap_content"
-            android:text="سماع اذكار(يتطلب انترنت)"
-            android:layout_margin="5dp"
-            android:id="@+id/listenazkarbtn"/>
-
-        <Button
-            android:background="@drawable/bu_back"
-            android:layout_marginTop="20sp"
+            android:layout_height="@dimen/_50sdp"
+            >
+            <TextView
+                android:background="@drawable/bu_back"
+                android:layout_marginTop="50dp"
 
 
+                android:gravity="center_vertical"
 
-            android:layout_width="match_parent"
-            android:layout_centerHorizontal="true"
-            android:fontFamily="@font/font5"
-            android:textSize="15sp"
-            android:drawableStart="@drawable/ic_settings_black_24dp"
+                android:layout_width="match_parent"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/pppppppppppppp"
+                android:textSize="@dimen/_15sdp"
 
-            android:textColor="#ffffff"
-            android:layout_height="wrap_content"
-            android:text="اعدادات الاذكار"
-            android:layout_margin="5dp"
-            android:id="@+id/btn_setting"/>
-        <Button
-            android:background="@drawable/bu_back"
-            android:layout_marginTop="50dp"
+                android:textColor="#2b6870"
+                android:layout_height="@dimen/_50sdp"
+                android:text="خروج من البرنامج"
+                android:layout_margin="5dp"
+                android:id="@+id/exit_btn"/>
 
 
 
-            android:layout_width="match_parent"
-            android:layout_centerHorizontal="true"
-            android:fontFamily="@font/font5"
-            android:textSize="15sp"
-            android:drawableStart="@drawable/ic_apps_black_24dp"
 
-            android:textColor="#ffffff"
-            android:layout_height="50dp"
-            android:text="مواقيت الصلاة"
-            android:layout_margin="5dp"
-            android:id="@+id/salat_btn"/>
-        <Button
-            android:background="@drawable/bu_back"
-            android:layout_marginTop="50dp"
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_alignParentLeft="true"
+                android:src="@drawable/ic_exit_to_app_black_24dp"/>
+
+        </RelativeLayout>
 
 
 
-            android:layout_width="match_parent"
-            android:layout_centerHorizontal="true"
-            android:fontFamily="@font/font5"
-            android:textSize="15sp"
-            android:drawableStart="@drawable/ic_exposure_black_24dp"
-
-            android:textColor="#ffffff"
-            android:layout_height="50dp"
-            android:text="المسبحة الالكترونية"
-            android:layout_margin="5dp"
-            android:id="@+id/electronic_btn"/>
-
-
-        <Button
-            android:background="@drawable/bu_back"
-            android:layout_marginTop="50dp"
 
 
 
-            android:layout_width="match_parent"
-            android:layout_centerHorizontal="true"
-            android:fontFamily="@font/font5"
-            android:textSize="15sp"
-            android:drawableStart="@drawable/ic_access_alarms_black_24dp"
-
-            android:textColor="#ffffff"
-            android:layout_height="50dp"
-            android:text="منبه السحور"
-            android:layout_margin="5dp"
-            android:id="@+id/sohor_alarm_btn"/>
-        <Button
-            android:background="@drawable/bu_back"
-            android:layout_marginTop="50dp"
 
 
 
-            android:layout_width="match_parent"
-            android:layout_centerHorizontal="true"
-            android:fontFamily="@font/font5"
-            android:textSize="15sp"
-            android:drawableStart="@drawable/ic_exit_to_app_black_24dp"
 
-            android:textColor="#ffffff"
-            android:layout_height="50dp"
-            android:text="خروج من البرنامج"
-            android:layout_margin="5dp"
-            android:id="@+id/exit_btn"/>
+
 
 
 
     </LinearLayout>
-    <ImageView
-        android:layout_width="40dp"
+    </ScrollView>
 
-        android:layout_height="40dp"
-        android:src="@drawable/ic_menu_black_24dp"
-        android:layout_alignParentRight="true"
-        android:id="@+id/menu_btn"/>
+
 
 
 

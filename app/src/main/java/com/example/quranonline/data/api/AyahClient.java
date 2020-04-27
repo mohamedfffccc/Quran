@@ -9,6 +9,7 @@ public class AyahClient {
     public static Retrofit retrofit,retrofit2,retrofit3;
     private static Retrofit retrofit4;
     private static Retrofit retrofit5;
+    private static Retrofit retrofit6;
 
     public static AyaApi getClient()
     {
@@ -48,5 +49,13 @@ public class AyahClient {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         return  retrofit5.create(AyaApi.class);
+    }
+    public static AyaApi getNearestPlace()
+    {
+        retrofit6=new Retrofit.Builder()
+                .baseUrl("https://maps.googleapis.com/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        return  retrofit6.create(AyaApi.class);
     }
 }

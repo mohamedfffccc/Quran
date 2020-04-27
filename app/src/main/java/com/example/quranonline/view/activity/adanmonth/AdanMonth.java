@@ -1,13 +1,12 @@
 package com.example.quranonline.view.activity.adanmonth;
 
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.view.animation.Animation;
-import android.view.animation.RotateAnimation;
+import android.util.Log;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.Switch;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -24,16 +23,29 @@ import com.example.quranonline.data.model.salatlist.SalatList;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
+import de.hdodenhof.circleimageview.CircleImageView;
 
+import static com.example.quranonline.data.local.Constants.ADAN_SERVICE;
+import static com.example.quranonline.data.local.Constants.ASR;
+import static com.example.quranonline.data.local.Constants.DUHR;
+import static com.example.quranonline.data.local.Constants.FAJR;
+import static com.example.quranonline.data.local.Constants.ISHAA;
+import static com.example.quranonline.data.local.Constants.MAGRIB;
+import static com.example.quranonline.data.local.HelperMethod.startAlarmService;
+import static com.example.quranonline.data.local.SharedPreferencesManger.LoadData;
+import static com.example.quranonline.data.local.SharedPreferencesManger.SaveData;
+import static com.example.quranonline.data.local.SharedPreferencesManger.loadPrayings;
+import static com.example.quranonline.data.local.SharedPreferencesManger.save;
 import static java.util.Locale.ENGLISH;
 
-public class AdanMonth extends AppCompatActivity implements SensorEventListener {
+public class AdanMonth extends AppCompatActivity {
 
     @BindView(R.id.prayings_rv)
     RecyclerView prayingsRv;
@@ -42,6 +54,12 @@ public class AdanMonth extends AppCompatActivity implements SensorEventListener 
     AdanMonthViewModel viewModel;
     @BindView(R.id.imv_compass)
     ImageView imvCompass;
+    @BindView(R.id.sw_adan)
+    Switch swAdan;
+    @BindView(R.id.adan_service_tv)
+    TextView adanServiceTv;
+    @BindView(R.id.reload_btn)
+    CircleImageView reloadBtn;
     private SimpleDateFormat simpleDateFormat;
     private String[] date_split;
     int month;
@@ -49,15 +67,30 @@ public class AdanMonth extends AppCompatActivity implements SensorEventListener 
     int method = 5;
     String address = "Cairo,Egypt";
     List<Datum> prayings = new ArrayList<>();
-    private float currentDegree = 0f;
-    private SensorManager sensorManager;
+    ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adan_month2);
         ButterKnife.bind(this);
-        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd", ENGLISH);
+        int value = Integer.parseInt(sdf.format(new Date()));
+        try {
+            if (LoadData(this, ADAN_SERVICE).equals("true")) {
+                swAdan.setChecked(true);
+                adanServiceTv.setText("خدمة الاذان مفعلة");
+
+            } else if (LoadData(this, ADAN_SERVICE).equals("false")) {
+                swAdan.setChecked(false);
+                adanServiceTv.setText("خدمة الاذان غير مفعلة");
+
+            }
+        } catch (Exception e) {
+
+        }
+
 
         simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy", ENGLISH);
         date_split = simpleDateFormat.format(new Date()).split("-");
@@ -65,22 +98,48 @@ public class AdanMonth extends AppCompatActivity implements SensorEventListener 
         linearLayoutManager.setOrientation(RecyclerView.HORIZONTAL);
         prayingsRv.setLayoutManager(linearLayoutManager);
         viewModel = ViewModelProviders.of(this).get(AdanMonthViewModel.class);
-        viewModel.getPrayings(address, method, date_split[1], date_split[2]);
-        viewModel.data.observe(this, new Observer<SalatList>() {
+        savePrayings();
+        initRecycler();
+
+
+        swAdan.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onChanged(SalatList data) {
-                for (int i = 0; i < data.getData().size(); i++) {
-                    prayings.addAll(Collections.singleton(data.getData().get(i)));
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    adanServiceTv.setText("خدمة الاذان مفعلة");
+                    SaveData(AdanMonth.this, ADAN_SERVICE, "true");
+                    try {
+                        startAlarmService(AdanMonth.this, LoadData(AdanMonth.this, FAJR));
+                        startAlarmService(AdanMonth.this, LoadData(AdanMonth.this, DUHR));
+                        startAlarmService(AdanMonth.this, LoadData(AdanMonth.this, ASR));
+                        startAlarmService(AdanMonth.this, LoadData(AdanMonth.this, MAGRIB));
+                        startAlarmService(AdanMonth.this, LoadData(AdanMonth.this, ISHAA));
+                    } catch (Exception e) {
+
+                    }
+
+                    Log.d("STARTED", "adan");
+                    Toast.makeText(AdanMonth.this, "خدمة الاذان مفعلة", Toast.LENGTH_SHORT).show();
+                } else {
+                    adanServiceTv.setText("خدمة الاذان غير مفعلة");
+                    SaveData(AdanMonth.this, ADAN_SERVICE, "false");
+                    Toast.makeText(AdanMonth.this, "خدمة الاذان غير مفعلة", Toast.LENGTH_SHORT).show();
 
                 }
-                adapter = new TimingAdapter(AdanMonth.this, prayings, AdanMonth.this);
-                prayingsRv.setAdapter(adapter);
-                SnapHelper snapHelper = new PagerSnapHelper();
-                snapHelper.attachToRecyclerView(prayingsRv);
-
-                prayingsRv.scrollToPosition(getPosition());
             }
         });
+        try {
+            initRecycler();
+
+            SaveData(AdanMonth.this, FAJR, parse(loadPrayings(AdanMonth.this).getData().get(value - 1).getTimings().getFajr()));
+            SaveData(AdanMonth.this, DUHR, parse(loadPrayings(AdanMonth.this).getData().get(value - 1).getTimings().getDhuhr()));
+            SaveData(AdanMonth.this, ASR, parse(loadPrayings(AdanMonth.this).getData().get(value - 1).getTimings().getAsr()));
+            SaveData(AdanMonth.this, MAGRIB, parse(loadPrayings(AdanMonth.this).getData().get(value - 1).getTimings().getMaghrib()));
+            SaveData(AdanMonth.this, ISHAA, parse(loadPrayings(AdanMonth.this).getData().get(value - 1).getTimings().getIsha()));
+
+        } catch (Exception e) {
+
+        }
     }
 
     public int getPosition() {
@@ -91,33 +150,57 @@ public class AdanMonth extends AppCompatActivity implements SensorEventListener 
 
     }
 
-    @Override
-    public void onSensorChanged(SensorEvent event) {
-        float degree = Math.round(event.values[0]);
-        RotateAnimation ra = new RotateAnimation(currentDegree, -degree, Animation.RELATIVE_TO_SELF, 0.5f,
-                Animation.RELATIVE_TO_SELF, 0.5f);
-        ra.setDuration(120);
-        ra.setFillAfter(true);
-        imvCompass.startAnimation(ra);
-        currentDegree = -degree;
+
+    public String parse(String time) {
+        int index = time.indexOf(" ");
+        String s = time.substring(0, index);
+        return s;
     }
 
-    @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+    public void savePrayings() {
+        viewModel.getPrayings(address, method, date_split[1], date_split[2]);
+        viewModel.data.observe(this, new Observer<SalatList>() {
+            @Override
+            public void onChanged(SalatList data) {
+                save(AdanMonth.this, data);
+                Log.d("SAVED", data.getData().toString());
+                adapter = new TimingAdapter(AdanMonth.this, loadPrayings(AdanMonth.this).getData(), AdanMonth.this);
+                prayingsRv.setAdapter(adapter);
+                SnapHelper snapHelper = new PagerSnapHelper();
+//                snapHelper.attachToRecyclerView(prayingsRv);
+
+                prayingsRv.scrollToPosition(getPosition());
+
+
+//
+            }
+        });
+    }
+
+    public void initRecycler() {
+        if (loadPrayings(AdanMonth.this) != null) {
+            adapter = new TimingAdapter(AdanMonth.this, loadPrayings(AdanMonth.this).getData(), AdanMonth.this);
+            prayingsRv.setAdapter(adapter);
+            SnapHelper snapHelper = new PagerSnapHelper();
+            snapHelper.attachToRecyclerView(prayingsRv);
+
+            prayingsRv.scrollToPosition(getPosition());
+        }
 
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        sensorManager.registerListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION), SensorManager.SENSOR_DELAY_GAME);
 
-    }
+    @OnClick(R.id.reload_btn)
+    public void onViewClicked() {
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        sensorManager.unregisterListener(this);
+        try {
 
+                save(AdanMonth.this, null);
+                savePrayings();
+               // initRecycler();
+
+        } catch (Exception e) {
+
+        }
     }
 }

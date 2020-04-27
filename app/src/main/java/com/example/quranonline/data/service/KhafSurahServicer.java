@@ -20,9 +20,9 @@ public class KhafSurahServicer extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        new OnlineNotification().notify(getApplicationContext() , "" , 0);
-//        MediaPlayer mp = MediaPlayer.create(getApplicationContext() , R.raw.kahf);
-//        mp.start();
+        new OnlineNotification().notify(getApplicationContext() , "سورة الكهف" , 0);
+        MediaPlayer mp = MediaPlayer.create(getApplicationContext() , R.raw.khaf);
+        mp.start();
 //        notifyAzkar(getApplicationContext() );
        // new OnlineNotification().notify(getApplicationContext() , "صلي علي محمد" , 0);
 

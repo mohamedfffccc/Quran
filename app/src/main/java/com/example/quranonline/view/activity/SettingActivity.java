@@ -26,12 +26,14 @@ import com.example.quranonline.data.service.KhafSurahServicer;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 import static com.example.quranonline.data.local.Constants.AZKAR;
+import static com.example.quranonline.data.local.Constants.KHAF_ALARM;
 import static com.example.quranonline.data.local.Constants.PERIOD;
 import static com.example.quranonline.data.local.SharedPreferencesManger.LoadData;
 import static com.example.quranonline.data.local.SharedPreferencesManger.SaveData;
@@ -64,6 +66,8 @@ public class SettingActivity extends AppCompatActivity {
     Switch activitySettingSwSurahKahf;
     private Intent azkar_i;
     private Intent khaf_i;
+    SimpleDateFormat simpleDateFormat;
+    String day_name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +75,9 @@ public class SettingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_setting);
         ButterKnife.bind(this);
         setSharedPreferences(SettingActivity.this);
+        simpleDateFormat=new SimpleDateFormat("EEEE" , Locale.ENGLISH);
+        day_name=simpleDateFormat.format(new Date());
+        Log.d("day" , day_name);
         try {
             if (LoadData(SettingActivity.this, AZKAR).equals("true")) {
                 activitySettingSw.setChecked(true);
@@ -98,6 +105,20 @@ public class SettingActivity extends AppCompatActivity {
                 activitySettingRbRare.setChecked(false);
             }
         } catch (Exception e) {
+
+        }
+        try {
+            if (LoadData(SettingActivity.this , KHAF_ALARM).equals("true")) {
+                activitySettingSwSurahKahf.setChecked(true);
+            }
+            else
+            if (LoadData(SettingActivity.this , KHAF_ALARM).equals("false")) {
+                activitySettingSwSurahKahf.setChecked(false);
+            }
+
+        }
+        catch (Exception e)
+        {
 
         }
 
@@ -154,7 +175,14 @@ public class SettingActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
+                    Toast.makeText(SettingActivity.this , "تم تفعيل قؤاءة سورة الكهف يوم الجمعة" , Toast.LENGTH_SHORT).show();
+                    SaveData(SettingActivity.this , KHAF_ALARM , "true");
                     startKuhfService();
+                }
+                else if (!isChecked) {
+                    SaveData(SettingActivity.this , KHAF_ALARM , "false");
+
+                    cancelKhafService();
                 }
             }
         });
@@ -190,19 +218,15 @@ public class SettingActivity extends AppCompatActivity {
         khaf_i = new Intent(SettingActivity.this, KhafSurahServicer.class);
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         PendingIntent pendingIntent = PendingIntent.getService(this, 0, khaf_i, 0);
-
-
-        // T
-
         Calendar calendar = Calendar.getInstance();
         int days = Calendar.FRIDAY + (7-calendar.get(Calendar.DAY_OF_WEEK));
-        calendar.set(Calendar.DATE,days);
-        calendar.set(Calendar.HOUR, 10);
+        Log.d("time" , days+"");
+        calendar.set(Calendar.DATE , days);
+        calendar.set(Calendar.HOUR, 9);
         calendar.set(Calendar.MINUTE, 00);
         calendar.set(Calendar.SECOND, 00);
-        alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),7*24*60*60*1000 ,
                   pendingIntent);
-        Toast.makeText(this , "تم تفعيل قؤاءة سورة الكهف يوم الجمعة" +days, Toast.LENGTH_SHORT).show();
     }
     public void cancelAzkar()
     {
@@ -212,6 +236,19 @@ public class SettingActivity extends AppCompatActivity {
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         alarmManager.cancel(pendingIntent);
         Toast.makeText(this , "تم ايقاف خدمة الازكار" , Toast.LENGTH_SHORT).show();
+
+
+
+
+    }
+    public void cancelKhafService()
+    {
+        Intent i  = new Intent(SettingActivity.this, KhafSurahServicer.class);
+        PendingIntent pendingIntent = PendingIntent.getService(this, 0, i, 0);
+
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        alarmManager.cancel(pendingIntent);
+        Toast.makeText(this , "تم ايقاف الخدمة " , Toast.LENGTH_SHORT).show();
 
 
 

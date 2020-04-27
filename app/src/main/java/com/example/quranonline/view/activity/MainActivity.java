@@ -2,19 +2,15 @@ package com.example.quranonline.view.activity;
 
 import android.Manifest;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Handler;
 import android.view.View;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -24,7 +20,7 @@ import androidx.core.app.ActivityCompat;
 
 import com.example.quranonline.R;
 import com.example.quranonline.view.activity.adanmonth.AdanMonth;
-import com.example.quranonline.view.activity.muslimadan.AdhanMoquite;
+import com.example.quranonline.view.activity.nearestplace.NearestMosqueActivity;
 import com.example.quranonline.view.fragment.AuthorFragment;
 import com.example.quranonline.view.fragment.SurahFragment;
 import com.example.quranonline.view.fragment.azkar.AzkarFragment;
@@ -42,29 +38,32 @@ import static com.example.quranonline.data.local.SharedPreferencesManger.SaveDat
 public class MainActivity extends BaseActivity {
 
     @BindView(R.id.readbtn)
-    Button readbtn;
+    TextView readbtn;
     @BindView(R.id.listenbtn)
-    Button listenbtn;
-    @BindView(R.id.tafseerglalin)
-    Button tafseerglalin;
+    TextView listenbtn;
+
 
 
     @BindView(R.id.main)
     RelativeLayout main;
     @BindView(R.id.btn_setting)
-    Button btnSetting;
-    @BindView(R.id.fragment_dealer_home_tv_departments)
-    TextView fragmentDealerHomeTvDepartments;
+    TextView btnSetting;
+
     @BindView(R.id.listenazkarbtn)
-    Button listenazkarbtn;
+    TextView listenazkarbtn;
     @BindView(R.id.linear_options)
     LinearLayout linearOptions;
-    @BindView(R.id.menu_btn)
-    ImageView menuBtn;
+
     @BindView(R.id.exit_btn)
-    Button exitBtn;
+    TextView exitBtn;
     @BindView(R.id.salat_btn)
-    Button salatBtn;
+    TextView salatBtn;
+    @BindView(R.id.qibla_btn)
+    TextView qiblaBtn;
+    @BindView(R.id.electronic_btn)
+    TextView electronicBtn;
+    @BindView(R.id.sohor_alarm_btn)
+    TextView sohorAlarmBtn;
 
 
     private Animation set;
@@ -76,48 +75,38 @@ public class MainActivity extends BaseActivity {
         ButterKnife.bind(this);
 
         CheckUserPermsions();
-        set = AnimationUtils.loadAnimation(MainActivity.this, R.anim.xtranslate);
     }
 
-    @OnClick({R.id.readbtn,R.id.electronic_btn ,R.id.sohor_alarm_btn ,   R.id.btn_setting, R.id.listenbtn, R.id.salat_btn, R.id.tafseerglalin, R.id.listenazkarbtn, R.id.exit_btn})
+    @OnClick({R.id.readbtn,R.id.nearest_mosque_btn , R.id.val_btn ,R.id.qibla_btn ,R.id.doaa_btn ,   R.id.electronic_btn, R.id.sohor_alarm_btn, R.id.btn_setting, R.id.listenbtn,R.id.share_btn , R.id.salat_btn, R.id.listenazkarbtn, R.id.exit_btn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.readbtn:
-                linearOptions.startAnimation(set);
-                linearOptions.setVisibility(View.GONE);
-                menuBtn.setImageResource(R.drawable.ic_menu_black_24dp);
+//                linearOptions.startAnimation(set);
+//                linearOptions.setVisibility(View.GONE);
                 SaveData(MainActivity.this, ACTION, "read");
                 ReplaceFragment(getSupportFragmentManager(), new SurahFragment(), R.id.main, null, "medo");
 
                 break;
             case R.id.listenbtn:
-                linearOptions.startAnimation(set);
-                linearOptions.setVisibility(View.GONE);
-                menuBtn.setImageResource(R.drawable.ic_menu_black_24dp);
+//                linearOptions.startAnimation(set);
+//                linearOptions.setVisibility(View.GONE);
                 SaveData(MainActivity.this, ACTION, "listen");
                 createDir();
                 ReplaceFragment(getSupportFragmentManager(), new AuthorFragment(), R.id.main, null, "medo");
 
                 break;
-            case R.id.tafseerglalin:
-                linearOptions.startAnimation(set);
-                linearOptions.setVisibility(View.GONE);
-                menuBtn.setImageResource(R.drawable.ic_menu_black_24dp);
-                SaveData(MainActivity.this, ACTION, "tafseer");
-                ReplaceFragment(getSupportFragmentManager(), new SurahFragment(), R.id.main, null, "medo");
 
-                break;
             case R.id.listenazkarbtn:
-                linearOptions.startAnimation(set);
-                linearOptions.setVisibility(View.GONE);
-                menuBtn.setImageResource(R.drawable.ic_menu_black_24dp);
+//                linearOptions.startAnimation(set);
+//                linearOptions.setVisibility(View.GONE);
+//                menuBtn.setImageResource(R.drawable.ic_menu_black_24dp);
                 ReplaceFragment(getSupportFragmentManager(), new AzkarFragment(), R.id.main, null, "medo");
 
                 break;
             case R.id.btn_setting:
-                linearOptions.startAnimation(set);
-                linearOptions.setVisibility(View.GONE);
-                menuBtn.setImageResource(R.drawable.ic_menu_black_24dp);
+//                linearOptions.startAnimation(set);
+//                linearOptions.setVisibility(View.GONE);
+//                menuBtn.setImageResource(R.drawable.ic_menu_black_24dp);
                 Intent setting_i = new Intent(this, SettingActivity.class);
                 startActivity(setting_i);
                 break;
@@ -128,14 +117,40 @@ public class MainActivity extends BaseActivity {
                 Intent salat_i = new Intent(this, AdanMonth.class);
                 startActivity(salat_i);
                 break;
-            case  R.id.electronic_btn:
+            case R.id.electronic_btn:
                 Intent elec_i = new Intent(this, ElectronicSebha.class);
                 startActivity(elec_i);
                 break;
-            case  R.id.sohor_alarm_btn :
+            case R.id.sohor_alarm_btn:
                 Intent sohor_i = new Intent(this, SohorAlarm.class);
                 startActivity(sohor_i);
                 break;
+            case R.id.qibla_btn :
+                Intent qibla_i = new Intent(this, QiblaActivity.class);
+                startActivity(qibla_i);
+                break;
+            case R.id.doaa_btn :
+                Intent khetm_i = new Intent(this, DoaaKtemQuran.class);
+                startActivity(khetm_i);
+                break;
+            case  R.id.val_btn :
+                Intent val_i = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + "com.NEWS.quranonline"));
+                startActivity(val_i);
+                break;
+            case R.id.share_btn :
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_SUBJECT, "قم بتنزيل هذا التطبيق الرائع");
+                sendIntent.putExtra(Intent.EXTRA_TEXT, "http://play.google.com/store/apps/details?id= com.NEWS.quranonline");
+                sendIntent.setType("img/plain");
+                startActivity(Intent.createChooser(sendIntent, ""));
+                break;
+            case  R.id.nearest_mosque_btn :
+                Intent location_i = new Intent(this, NearestMosqueActivity.class);
+                startActivity(location_i);
+                break;
+
+
 
 
         }
@@ -195,8 +210,7 @@ public class MainActivity extends BaseActivity {
         builder.setPositiveButton("نعم", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                finish();
-                finish();
+                ActivityCompat.finishAffinity(MainActivity.this);
             }
         })
                 .setNegativeButton("لا", new DialogInterface.OnClickListener() {
@@ -212,21 +226,6 @@ public class MainActivity extends BaseActivity {
     public void onBackPressed() {
         super.superBackPressed();
     }
-
-    @OnClick(R.id.menu_btn)
-    public void onViewClicked() {
-        if (linearOptions.getVisibility() == View.GONE) {
-            Animation set2 = AnimationUtils.loadAnimation(MainActivity.this, R.anim.translate);
-            linearOptions.setVisibility(View.VISIBLE);
-            linearOptions.startAnimation(set2);
-            menuBtn.setImageResource(R.drawable.ic_arrow_forward_black_24dp);
-        } else if (linearOptions.getVisibility() == View.VISIBLE) {
-
-            linearOptions.startAnimation(set);
-            linearOptions.setVisibility(View.GONE);
-            menuBtn.setImageResource(R.drawable.ic_menu_black_24dp);
-
-        }
-
-    }
 }
+
+

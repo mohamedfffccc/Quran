@@ -11,6 +11,8 @@ import com.example.quranonline.R;
 import static com.example.quranonline.data.local.HelperMethod.notifyAzkar;
 
 public class SohorAlarmsSrvice extends Service {
+    private MediaPlayer mp;
+
     public SohorAlarmsSrvice() {
     }
 
@@ -22,7 +24,7 @@ public class SohorAlarmsSrvice extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        MediaPlayer mp = MediaPlayer.create(getApplicationContext() , R.raw.sohor);
+         mp = MediaPlayer.create(getApplicationContext() , R.raw.sohor);
         mp.start();
         Intent intent1 = new Intent();
         intent1.setAction("com.medo.sohoralarm");
@@ -47,9 +49,11 @@ public class SohorAlarmsSrvice extends Service {
         return START_STICKY;
     }
 
+
     @Override
     public void onDestroy() {
         super.onDestroy();
+        mp.stop();
         Toast.makeText(this,"alarm stopped" , Toast.LENGTH_SHORT).show();
 
 

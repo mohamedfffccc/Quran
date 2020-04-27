@@ -17,4 +17,5 @@
 
     <string name="action_share">Share</string>
     <string name="action_reply">Reply</string>
+    <string name="title_activity_nearest_mosque">Map</string>
 </resources>

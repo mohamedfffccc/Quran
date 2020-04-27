@@ -11,7 +11,9 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.SnapHelper;
 
 import com.example.quranonline.R;
 import com.example.quranonline.adapter.AyahAdapter;
@@ -21,7 +23,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import me.zhanghai.android.fastscroll.FastScrollerBuilder;
 
 import static com.example.quranonline.data.local.HelperMethod.dismissProgressDialog;
 import static com.example.quranonline.data.local.HelperMethod.showProgressDialog;
@@ -56,6 +57,7 @@ public class AyahFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_ayah, container, false);
         ButterKnife.bind(this, v);
+
         tvSurahName.setText("سورة " + name);
         tvSurahType.setText(type);
         linearLayout = new LinearLayoutManager(getActivity());
@@ -70,9 +72,10 @@ public class AyahFragment extends Fragment {
                 adapter = new AyahAdapter(getActivity(), verses, AyahFragment.this, surahNumber);
                 ayarv.setAdapter(adapter);
                 tvSurahAyaNums.setText(verses.size()+"");
+//                SnapHelper snapHelper = new PagerSnapHelper();
+//                snapHelper.attachToRecyclerView(ayarv);
             }
         });
-        new FastScrollerBuilder(ayarv).build();
         return v;
     }
 

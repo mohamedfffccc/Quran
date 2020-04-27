@@ -105,18 +105,13 @@ public class SohorAlarm extends AppCompatActivity {
         sohor_i = new Intent(SohorAlarm.this, SohorAlarmsSrvice.class);
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         PendingIntent pendingIntent = PendingIntent.getService(this, 0, sohor_i, 0);
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
-
-        // T
-
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.HOUR_OF_DAY, hour);
         calendar.set(Calendar.MINUTE, minute);
         calendar.set(Calendar.SECOND, 00);
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
                 AlarmManager.INTERVAL_DAY, pendingIntent);
-
-    }
+ }
 
     public void cancelAlarm() {
         Intent i = new Intent(SohorAlarm.this, SohorAlarmsSrvice.class);

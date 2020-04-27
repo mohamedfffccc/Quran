@@ -17,8 +17,11 @@ import com.example.quranonline.data.model.salatlist.Datum;
 import com.example.quranonline.view.activity.adanmonth.AdanMonth;
 import com.example.quranonline.view.fragment.ayah.AyahFragment;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -63,7 +66,8 @@ public class TimingAdapter extends RecyclerView.Adapter<TimingAdapter.Categories
 
     @Override
     public void onBindViewHolder(@NonNull CategoriesViewHolder holder, int position) {
-        holder.activityAdanTvDateName.setText(categoryList.get(position).getDate().getGregorian().getDate());
+        holder.activityAdanTvDateName.setText(categoryList.get(position).getDate().getGregorian().getDate() + "\n"
+        + categoryList.get(position).getDate().getHijri().getDate());
         holder.activityAdanTvDate.setText(getDayName(categoryList.get(position).getDate().getGregorian().getWeekday().getEn()));
         holder.fajrTv.setText("الفجر   " + setTimings(categoryList.get(position).getTimings().getFajr()) + "  AM");
         holder.sunsetTv.setText("الشروق   " + setTimings(categoryList.get(position).getTimings().getSunrise()) + "  AM");
@@ -73,6 +77,8 @@ public class TimingAdapter extends RecyclerView.Adapter<TimingAdapter.Categories
                 "" + setTimings(categoryList.get(position).getTimings().getMaghrib()) + "  PM");
         holder.ishaTv.setText("العشاء   " + setTimings(categoryList.get(position).getTimings().getIsha()) + "  PM");
         holder.ivCompass.setVisibility(View.GONE);
+
+
 
     }
     public String setTimings(String time)
@@ -84,6 +90,12 @@ public class TimingAdapter extends RecyclerView.Adapter<TimingAdapter.Categories
             return  p+":"+times[1];
         }
         return  time;
+    }
+    public String parse(String time)
+    {
+        int index = time.indexOf(" ");
+        String s = time.substring(0,index);
+        return s;
     }
     public  String getDayName(String name)
     {

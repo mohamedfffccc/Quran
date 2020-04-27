@@ -10,12 +10,12 @@
         android:layout_width="match_parent"
         android:layout_marginTop="100dp"
         android:layout_height="300dp"
-        android:src="@drawable/gre2"/>
+        android:src="@drawable/ic_mode_mushaf_2"/>
     <ProgressBar
         android:visibility="gone"
-        android:layout_width="100dp"
+        android:layout_width="@dimen/_60sdp"
         android:id="@+id/pr_loading"
-        android:layout_height="100dp"
+        android:layout_height="@dimen/_60sdp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="150dp"/>

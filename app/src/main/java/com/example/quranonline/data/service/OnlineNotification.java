@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 
@@ -93,6 +94,8 @@ public class OnlineNotification {
                 .setSmallIcon(R.drawable.quran)
                 .setContentTitle(title)
                 .setContentText(text)
+                .setLights(Color.GREEN, 3000 , 300)
+                .setVibrate(new long[] {100,200,300,400})
 
                 // All fields below this line are optional.
 
@@ -163,6 +166,10 @@ public class OnlineNotification {
             @SuppressLint("WrongConstant") NotificationChannel channel = new NotificationChannel(channel_id,
                     "channel human readable title"
                     ,NotificationManager.IMPORTANCE_DEFAULT);
+            channel.enableVibration(true);
+            channel.setVibrationPattern(new long[] {100,200,300,400});
+            channel.enableLights(true);
+            channel.setLightColor(Color.GREEN);
 
             builder.setChannelId(channel_id);
 

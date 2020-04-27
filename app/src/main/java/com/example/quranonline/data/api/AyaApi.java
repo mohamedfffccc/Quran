@@ -2,9 +2,11 @@ package com.example.quranonline.data.api;
 
 import com.example.quranonline.data.model.Azkar;
 import com.example.quranonline.data.model.ayat.Ayat;
+import com.example.quranonline.data.model.places.Places;
 import com.example.quranonline.data.model.salat.salat.Salat;
 import com.example.quranonline.data.model.salatlist.SalatList;
 import com.example.quranonline.data.model.tafseer.Tafseer;
+import com.google.android.gms.maps.model.LatLng;
 
 import java.util.List;
 
@@ -36,4 +38,12 @@ public interface AyaApi {
                                @Query("method") int method,
                                @Query("month") String month ,
                                @Query("year") String year);
+    @GET("maps/api/place/nearbysearch/json")
+    Call<Places> getNearestMosque(
+                                  @Query("location")String location ,
+                                  @Query("radius") int radius ,
+                                  @Query("types") String types ,
+                                  @Query("name") String name ,
+                                  @Query("key") String key);
+
 }

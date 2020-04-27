@@ -2,12 +2,12 @@
 <inset android:insetBottom="-1dp" android:shape="rectangle" xmlns:android="http://schemas.android.com/apk/res/android">
 <shape  android:shape="rectangle">
     <corners android:radius="10dp"/>
-    <gradient android:startColor="#365264"
+    <gradient android:startColor="#fff"
         android:angle="90"
         android:centerX="0.5"
         android:centerY="0.9"
-        android:centerColor="#365264"
-        android:endColor="#365264"/>
+        android:centerColor="#fff"
+        android:endColor="#fff"/>
     <stroke android:width="0.5dp"
         android:color="#365264"/>
 

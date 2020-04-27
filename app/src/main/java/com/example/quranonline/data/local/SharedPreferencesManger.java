@@ -14,6 +14,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static com.example.quranonline.data.local.Constants.SALAT;
+
 public class SharedPreferencesManger {
 
     public static SharedPreferences sharedPreferences = null;
@@ -89,14 +91,14 @@ public class SharedPreferencesManger {
     }
 
     public static void save(Activity activity, SalatList prayer) {
-        SaveData(activity, USER_DATA, prayer);
+        SaveData(activity, SALAT, prayer);
     }
 
     public static SalatList loadPrayings(Activity activity) {
         SalatList salatlist = null;
 
         Gson gson = new Gson();
-        salatlist = gson.fromJson(LoadData(activity, USER_DATA), SalatList.class);
+        salatlist = gson.fromJson(LoadData(activity, SALAT), SalatList.class);
 
         return salatlist;
     }
