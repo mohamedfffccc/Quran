@@ -29,6 +29,7 @@ public class AuthorFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         setUpActivity();
+        /////////////////
         View root = inflater.inflate(R.layout.fragment_author, container, false);
         ButterKnife.bind(this, root);
         addData();
