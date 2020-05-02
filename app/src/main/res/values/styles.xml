@@ -4,5 +4,9 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
 
     </style>
+    <style name="cal" parent="TextAppearance.MaterialCalendarWidget.Header">
+        <item name="android:fontFamily">@font/pppppppppppppp</item>
+        <item name="android:calendarTextColor">#482165</item>
+    </style>
 
 </resources>

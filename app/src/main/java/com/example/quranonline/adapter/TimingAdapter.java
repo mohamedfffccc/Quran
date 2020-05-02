@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quranonline.R;
 import com.example.quranonline.data.model.salatlist.Datum;
-import com.example.quranonline.view.activity.adanmonth.AdanMonth;
 import com.example.quranonline.view.fragment.ayah.AyahFragment;
 
 import java.text.SimpleDateFormat;
@@ -43,16 +42,14 @@ public class TimingAdapter extends RecyclerView.Adapter<TimingAdapter.Categories
     private List<Datum> categoryList = new ArrayList<>();
     public AyahFragment fragment;
     public int surahNumber;
-    AdanMonth activity;
     //    private Typeface type;
 
 
-    public TimingAdapter(Context context, List<Datum> categoryList , AdanMonth activity) {
+    public TimingAdapter(Context context, List<Datum> categoryList ) {
         this.context = context;
         this.categoryList = categoryList;
         this.fragment = fragment;
         this.surahNumber = surahNumber;
-        this.activity=activity;
 
 
     }

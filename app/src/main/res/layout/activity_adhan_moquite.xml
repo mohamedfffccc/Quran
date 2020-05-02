@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
 
     tools:context=".view.activity.muslimadan.AdhanMoquite">
 
@@ -15,9 +15,9 @@
         android:textStyle="bold"
         android:text="اليوم"
       android:layout_centerHorizontal="true"        
-        android:layout_marginTop="0dp"
-        android:textColor="#000"
-        android:fontFamily="@font/font5"
+        android:layout_marginTop="@dimen/_50sdp"
+        android:textColor="#174"
+        android:fontFamily="@font/kofy3"
         android:id="@+id/activity_adan_tv_date"/>
     <TextView
 android:layout_below="@id/activity_adan_tv_date"
@@ -30,94 +30,107 @@ android:layout_below="@id/activity_adan_tv_date"
         android:layout_marginStart="@dimen/_15sdp"
         android:layout_marginTop="@dimen/_5sdp"
         android:layout_marginRight="100dp"
-        android:textColor="#000"
-        android:fontFamily="@font/font5"
+        android:textColor="#174"
+        android:fontFamily="@font/kofy3"
         android:id="@+id/activity_adan_tv_date_name"/>
-    <LinearLayout
-        android:gravity="center"
-        android:layout_alignParentRight="true"
-        android:id="@+id/lin_salat"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_below="@id/activity_adan_tv_date_name"
-        android:layout_marginTop="5dp"
-        android:orientation="vertical"
+        android:id="@+id/car_salat"
+
         android:layout_height="wrap_content"
+        android:elevation="@dimen/_10sdp"
+        android:layout_below="@id/activity_adan_tv_date_name"
+
         >
-     <TextView
-         android:layout_gravity="center"
-         android:fontFamily="@font/quran"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:id="@+id/fajr_tv"
-         android:textColor="#456"
-         android:textStyle="bold"
-         android:textSize="@dimen/_15sdp"
-         android:text="الفجر"/>
-        <TextView
-            android:layout_gravity="center"
-            android:fontFamily="@font/quran"
-            android:layout_marginTop="15dp"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/lin_salat"
+
+            android:gravity="center"
+            android:layout_alignParentRight="true"
+            android:layout_width="match_parent"
+            android:layout_below="@id/activity_adan_tv_date_name"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical"
             android:layout_height="wrap_content"
-            android:id="@+id/sunset_tv"
-            android:textColor="#456"
-            android:textStyle="bold"
-            android:textSize="@dimen/_15sdp"
-            android:text="الفجر"/>
-        <TextView
-            android:layout_gravity="center"
-            android:layout_marginTop="15dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/duhr_tv"
-            android:textColor="#456"
-            android:fontFamily="@font/quran"
-            android:textStyle="bold"
-            android:textSize="@dimen/_15sdp"
-            android:text="الفجر"/>
-        <TextView
-            android:layout_gravity="center"
-            android:layout_marginTop="15dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/asr_tv"
-            android:textColor="#456"
-            android:fontFamily="@font/quran"
-            android:textStyle="bold"
-            android:textSize="@dimen/_15sdp"
-            android:text="الفجر"/>
-        <TextView
-            android:layout_gravity="center"
-            android:layout_marginTop="15dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/magrib_tv"
-            android:textColor="#456"
-            android:fontFamily="@font/quran"
-            android:textStyle="bold"
-            android:textSize="@dimen/_15sdp"
-            android:text="الفجر"/>
-        <TextView
-            android:layout_gravity="center"
-            android:layout_marginTop="15dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/isha_tv"
-            android:textColor="#456"
-            android:fontFamily="@font/quran"
-            android:textStyle="bold"
-            android:textSize="@dimen/_15sdp"
-            android:text="الفجر"/>
+            >
+            <TextView
+                android:layout_gravity="center"
+                android:fontFamily="@font/quran"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/fajr_tv"
+                android:textColor="#147"
+                android:textStyle="bold"
+                android:textSize="@dimen/_15sdp"
+                android:text="الفجر"/>
+            <TextView
+                android:layout_gravity="center"
+                android:fontFamily="@font/quran"
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/sunset_tv"
+                android:textColor="#147"
+                android:textStyle="bold"
+                android:textSize="@dimen/_15sdp"
+                android:text="الفجر"/>
+            <TextView
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/duhr_tv"
+                android:textColor="#147"
+                android:fontFamily="@font/quran"
+                android:textStyle="bold"
+                android:textSize="@dimen/_15sdp"
+                android:text="الفجر"/>
+            <TextView
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/asr_tv"
+                android:textColor="#147"
+                android:fontFamily="@font/quran"
+                android:textStyle="bold"
+                android:textSize="@dimen/_15sdp"
+                android:text="الفجر"/>
+            <TextView
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/magrib_tv"
+                android:textColor="#147"
+                android:fontFamily="@font/quran"
+                android:textStyle="bold"
+                android:textSize="@dimen/_15sdp"
+                android:text="الفجر"/>
+            <TextView
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/isha_tv"
+                android:textColor="#147"
+                android:fontFamily="@font/quran"
+                android:textStyle="bold"
+                android:textSize="@dimen/_15sdp"
+                android:text="الفجر"/>
 
 
-    </LinearLayout>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
     <ImageView
         android:visibility="gone"
         android:layout_marginTop="20sp"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:src="@drawable/comoas2"
-        android:layout_below="@id/lin_salat"
+        android:layout_below="@id/car_salat"
         android:id="@+id/iv_compass"/>
 
 </RelativeLayout>

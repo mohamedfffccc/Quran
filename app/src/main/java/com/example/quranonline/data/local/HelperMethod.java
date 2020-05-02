@@ -40,6 +40,7 @@ import com.example.quranonline.R;
 import com.example.quranonline.data.service.AdanService;
 import com.example.quranonline.data.service.AzkarService;
 import com.example.quranonline.view.activity.SettingActivity;
+import com.google.android.material.tabs.TabLayout;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -222,6 +223,13 @@ public class HelperMethod {
         Log.d("adan" , "الساعة " + Integer.parseInt(times[0]) +"والدقيقة "+Integer.parseInt(times[1]));
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
                 AlarmManager.INTERVAL_DAY, pendingIntent);
+    }
+    public  static  void setTabs(TabLayout tabLayout)
+    {
+        int [] icons = new int[] {R.drawable.ic_menu_black_24dp , R.drawable.ic_mode_qibla_2 , R.drawable.ic_prayer_time_2};
+        tabLayout.getTabAt(0).setIcon(icons[0]);
+        tabLayout.getTabAt(1).setIcon(icons[1]);
+        tabLayout.getTabAt(2).setIcon(icons[2]);
     }
 
 

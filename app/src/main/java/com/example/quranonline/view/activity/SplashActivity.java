@@ -54,7 +54,9 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                isNetworkAvailable(SplashActivity.this);
+                startActivity(new Intent(SplashActivity.this, HomePageActivIty.class));
+
+                // isNetworkAvailable(SplashActivity.this);
 
                 //
 
@@ -87,7 +89,7 @@ public class SplashActivity extends AppCompatActivity {
                     NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
                     if (activeNetworkInfo != null && activeNetworkInfo.isConnected()) {
                         Log.i("update_statut", "Network is available : true");
-                        startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                        startActivity(new Intent(SplashActivity.this, HomePageActivIty.class));
                         return true;
                     }
                 } catch (Exception e) {
@@ -119,7 +121,7 @@ public class SplashActivity extends AppCompatActivity {
 
                 break;
             case R.id.btn_continue:
-                startActivity(new Intent(this , MainActivity.class));
+              //  startActivity(new Intent(this , MainActivity.class));
 
                 break;
         }

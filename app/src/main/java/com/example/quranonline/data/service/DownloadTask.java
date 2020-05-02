@@ -5,8 +5,6 @@ import android.os.AsyncTask;
 import android.os.PowerManager;
 import android.widget.Toast;
 
-import com.example.quranonline.view.activity.MainActivity;
-
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -16,7 +14,6 @@ import java.net.URL;
 
 import static com.example.quranonline.data.local.HelperMethod.dialog;
 import static com.example.quranonline.data.local.HelperMethod.showDownloadProgress;
-import static com.example.quranonline.data.local.HelperMethod.showProgressDialog;
 
 public class DownloadTask extends AsyncTask<String, Integer, String> {
     private Context context;

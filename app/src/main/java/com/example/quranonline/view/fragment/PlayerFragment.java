@@ -8,8 +8,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -18,7 +16,6 @@ import androidx.fragment.app.Fragment;
 
 import com.example.quranonline.R;
 import com.example.quranonline.data.service.DownloadTask;
-import com.example.quranonline.view.activity.MainActivity;
 
 import java.io.IOException;
 
@@ -68,7 +65,6 @@ public class PlayerFragment extends BaseFragment {
     String instagramu = "com.instagram.android";
     String pinterestu = "com.pinterest";
     String whatsupu = "com.whatsapp";
-    MainActivity ma;
     @BindView(R.id.btn_download)
     ImageView btnDownload;
     @BindView(R.id.player_tv_surah_name)

@@ -3,8 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_marginTop="@dimen/_40sdp"
     android:layout_height="match_parent"
-    tools:context=".view.activity.QiblaActivity">
+    >
     <TextView
         android:layout_width="wrap_content"
         android:layout_alignParentRight="true"
@@ -12,13 +13,13 @@
         android:textSize="@dimen/_15sdp"
         android:fontFamily="@font/kofy2"
         android:layout_height="wrap_content"
-        android:textColor="#cecece"
+        android:textColor="#000"
         android:text="يتم تحديد اتجاه القبلة بناءا علي القمر الصناعي"/>
     <ImageView
         android:layout_marginTop="20sp"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_200sdp"
-        android:src="@drawable/ic_q_dial"
+        android:src="@drawable/dir"
 android:layout_centerInParent="true"
         android:id="@+id/imv_compass"/>
     <TextView
@@ -29,8 +30,7 @@ android:layout_centerInParent="true"
         android:textSize="@dimen/_15sdp"
         android:fontFamily="@font/kofy2"
         android:layout_height="wrap_content"
-        android:textColor="#ff000000"
+        android:textColor="#000"
         android:text="اتجاه القبلة هو اتجاه الشمال المغناديسي (حرف S)"/>
-
 
 </RelativeLayout>

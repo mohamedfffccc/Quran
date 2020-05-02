@@ -7,19 +7,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.SeekBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.quranonline.R;
 import com.example.quranonline.data.model.Azkar;
 import com.example.quranonline.data.service.DownloadTask;
-import com.example.quranonline.view.activity.MainActivity;
+import com.example.quranonline.view.activity.HomePageActivIty;
 import com.example.quranonline.view.fragment.AzkarPlayer;
 
 import java.util.ArrayList;
@@ -27,7 +24,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 import static com.example.quranonline.data.local.HelperMethod.ReplaceFragment;
@@ -47,10 +43,10 @@ public class AzkarAdapter extends RecyclerView.Adapter<AzkarAdapter.CategoriesVi
     private Context context;
     //    private BaseActivity activity;
     private List<Azkar> categoryList = new ArrayList<>();
-    MainActivity mainActivity;
+    HomePageActivIty mainActivity;
 
 
-    public AzkarAdapter(Context context, List<Azkar> categoryList, MainActivity mainActivity) {
+    public AzkarAdapter(Context context, List<Azkar> categoryList, HomePageActivIty mainActivity) {
         this.context = context;
         this.categoryList = categoryList;
         this.mainActivity = mainActivity;

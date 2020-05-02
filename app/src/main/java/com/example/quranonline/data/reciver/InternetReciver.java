@@ -4,20 +4,11 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
-import android.net.Network;
 import android.net.NetworkCapabilities;
 import android.net.NetworkInfo;
 import android.os.Build;
-import android.os.Handler;
 import android.util.Log;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Toast;
-
-import com.example.quranonline.R;
-import com.example.quranonline.view.activity.MainActivity;
-import com.example.quranonline.view.activity.SplashActivity;
 
 public class InternetReciver extends BroadcastReceiver {
 
