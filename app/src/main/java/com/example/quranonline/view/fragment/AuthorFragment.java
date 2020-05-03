@@ -41,7 +41,7 @@ public class AuthorFragment extends BaseFragment {
                 SurahFragment fragment = new SurahFragment();
                 fragment.server_name=data.get(position).name;
                 fragment.server_num=data.get(position).servername;
-                ReplaceFragment(getActivity().getSupportFragmentManager(),fragment,R.id.main , null , "medo");
+                ReplaceFragment(getActivity().getSupportFragmentManager(),fragment,R.id.azkar_id , null , "medo");
 
             }
         });

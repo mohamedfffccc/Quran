@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.example.quranonline.R;
 import com.example.quranonline.data.model.Azkar;
 import com.example.quranonline.data.service.DownloadTask;
+import com.example.quranonline.view.activity.AzkarActivity;
 import com.example.quranonline.view.activity.HomePageActivIty;
 import com.example.quranonline.view.fragment.AzkarPlayer;
 
@@ -43,10 +44,10 @@ public class AzkarAdapter extends RecyclerView.Adapter<AzkarAdapter.CategoriesVi
     private Context context;
     //    private BaseActivity activity;
     private List<Azkar> categoryList = new ArrayList<>();
-    HomePageActivIty mainActivity;
+    AzkarActivity mainActivity;
 
 
-    public AzkarAdapter(Context context, List<Azkar> categoryList, HomePageActivIty mainActivity) {
+    public AzkarAdapter(Context context, List<Azkar> categoryList, AzkarActivity mainActivity) {
         this.context = context;
         this.categoryList = categoryList;
         this.mainActivity = mainActivity;
@@ -79,7 +80,7 @@ public class AzkarAdapter extends RecyclerView.Adapter<AzkarAdapter.CategoriesVi
             @Override
             public void onClick(View v) {
                 AzkarPlayer c = new AzkarPlayer();
-                ReplaceFragment(mainActivity.getSupportFragmentManager(), c, R.id.main
+                ReplaceFragment(mainActivity.getSupportFragmentManager(), c, R.id.azkar_id
             , null, "");
                 c.azkar=categoryList.get(position);
             }

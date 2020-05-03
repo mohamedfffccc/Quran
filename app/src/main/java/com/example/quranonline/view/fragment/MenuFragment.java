@@ -13,6 +13,7 @@ import androidx.appcompat.widget.AppCompatImageView;
 import androidx.fragment.app.Fragment;
 
 import com.example.quranonline.R;
+import com.example.quranonline.view.activity.AzkarActivity;
 import com.example.quranonline.view.activity.DoaaKtemQuran;
 import com.example.quranonline.view.activity.ElectronicSebha;
 import com.example.quranonline.view.activity.HigriCalender;
@@ -95,7 +96,8 @@ public class MenuFragment extends BaseFragment {
                 getActivity().startActivity(val_i);
                 break;
             case R.id.listenazkarbtn:
-                ReplaceFragment(getActivity().getSupportFragmentManager(), new AzkarFragment(), R.id.main, null, "medo");
+                getActivity().startActivity(new Intent(getActivity(), AzkarActivity.class));
+
 
                 break;
             case R.id.listenbtn:

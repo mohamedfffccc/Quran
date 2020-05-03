@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.quranonline.R;
 import com.example.quranonline.adapter.AzkarAdapter;
 import com.example.quranonline.data.model.Azkar;
+import com.example.quranonline.view.activity.AzkarActivity;
 import com.example.quranonline.view.activity.HomePageActivIty;
 import com.example.quranonline.view.fragment.BaseFragment;
 
@@ -31,7 +32,7 @@ public class AzkarFragment extends BaseFragment {
     @BindView(R.id.azkar_rv_azkar)
     RecyclerView azkarRvAzkar;
     AzkarAdapter adapter;
-    HomePageActivIty ma;
+    AzkarActivity ma;
 
 
     @Override
@@ -39,7 +40,9 @@ public class AzkarFragment extends BaseFragment {
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_azkar, container, false);
         ButterKnife.bind(this, root);
-        ma=(HomePageActivIty) getActivity();
+        ma=(AzkarActivity) getActivity();
+       // ma.relativeHome.setVisibility(View.GONE);
+
         AzkarViewModel viewModel = ViewModelProviders.of(this).get(AzkarViewModel.class);
         linearLayoutManager = new LinearLayoutManager(getActivity());
         azkarRvAzkar.setLayoutManager(linearLayoutManager);
@@ -59,6 +62,6 @@ public class AzkarFragment extends BaseFragment {
     @Override
     public void onBack() {
         super.onBack();
-        adapter.mp.stop();
+        ma.relativeHome.setVisibility(View.VISIBLE);
     }
 }

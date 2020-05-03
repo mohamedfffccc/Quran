@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/azkar_id"
+    android:background="#fff"
+    tools:context=".AzkarActivity">
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:id="@+id/toolbar_home"
+        android:layout_height="wrap_content"
+        android:background="#924"
+        app:titleTextColor="#fff"
+        app:title="الاذكار اليومية"
+        app:titleTextAppearance="@style/TextAppearance.AppCompat.Large"
+        />
+    <RelativeLayout
+        android:layout_below="@id/toolbar_home"
+        android:layout_width="match_parent"
+        android:id="@+id/relative_home"
+        android:layout_height="wrap_content"
+        >
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_100sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:background="@drawable/bu_azkar"
+        android:layout_alignParentStart="true"
+        android:textSize="@dimen/_20sdp"
+        android:textColor="#fff"
+        android:text=" اذكار الصباح"
+        android:fontFamily="@font/quran"
+        android:id="@+id/azkar_activity_bu_sabah"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_100sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:background="@drawable/bu_azkar"
+        android:layout_alignParentEnd="true"
+        android:textSize="@dimen/_20sdp"
+        android:textColor="#fff"
+        android:text=" اذكار المساء"
+        android:fontFamily="@font/quran"
+        android:id="@+id/azkar_activity_bu_soir"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:background="@drawable/bu_azkar"
+        android:layout_alignParentStart="true"
+        android:textSize="@dimen/_20sdp"
+        android:textColor="#fff"
+        android:text=" اذكار النوم"
+        android:fontFamily="@font/quran"
+        android:layout_below="@id/azkar_activity_bu_soir"
+        android:id="@+id/azkar_activity_bu_sleep"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:background="@drawable/bu_azkar"
+        android:layout_alignParentEnd="true"
+        android:textSize="@dimen/_20sdp"
+        android:textColor="#fff"
+        android:text="  استماع للاذكار"
+        android:fontFamily="@font/quran"
+        android:layout_below="@id/azkar_activity_bu_soir"
+        android:id="@+id/azkar_activity_bu_listen"/>
+    </RelativeLayout>
+
+
+</RelativeLayout>
